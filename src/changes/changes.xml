@@ -4,7 +4,11 @@
 
     <body>
 
-        <release version="CURRENT" date="TODAY" description="DESC">
+        <release version="1.3.1" date="2013-11-14" description="Initial Release">
+
+            <action type="update" issue="CFG-47" dev="ykryshchuk">
+                Configuration Processor module has been extracted from PE Project source.
+            </action>
 
         </release>
 

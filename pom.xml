@@ -26,6 +26,21 @@
         <url>ssh://git@git.cloudbees.com/baxter/config-processor-price-engine.git</url>
     </scm>
 
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://baxter-it.atlassian.net/browse/CFG</url>
+    </issueManagement>
+
+    <developers>
+
+        <developer>
+            <id>ykryshchuk</id>
+            <name>Yuriy Kryshchuk</name>
+            <timezone>+2</timezone>
+        </developer>
+
+    </developers>
+
     <build>
 
         <pluginManagement>
@@ -311,20 +326,51 @@
                             <groupId>no.arktekk.unix</groupId>
                             <version>1.0-alpha-6</version>
                             <configuration>
+                                <debug>true</debug>
+                                <contact>${project.organization.name}</contact>
+                                <contactEmail>info.config@baxter-it.com</contactEmail>
+                                <description>${project.description}</description>
                                 <deb>
-                                    <depends>config-server(&gt;= ${config.dep.version}), statistics-config-processor</depends>
+                                    <priority>optional</priority>
+                                    <section>${unix.application.group.name}</section>
                                 </deb>
-                                <assembly combine.children="append">
-                                    <copyFile>
-                                        <path>${project.build.directory}/${project.build.finalName}.jar</path>
-                                        <toDir>${unix.application.lib.dir}</toDir>
-                                    </copyFile>
-                                    <symlink>
-                                        <value>${unix.application.lib.dir}/${project.build.finalName}.jar</value>
-                                        <path>${config.processors.lib.dir}/${project.artifactId}.jar</path>
-                                    </symlink>
-                                </assembly>
+                                <defaults>
+                                    <fileAttributes>
+                                        <user>${unix.user}</user>
+                                        <group>${unix.group}</group>
+                                        <mode>644</mode>
+                                    </fileAttributes>
+                                    <directoryAttributes>
+                                        <user>${unix.user}</user>
+                                        <group>${unix.group}</group>
+                                        <mode>755</mode>
+                                    </directoryAttributes>
+                                </defaults>
                             </configuration>
+                            <executions>
+                                <execution>
+                                    <id>build-deb-installer</id>
+                                    <phase>package</phase>
+                                    <goals>
+                                        <goal>package-deb-attached</goal>
+                                    </goals>
+                                    <configuration>
+                                        <deb>
+                                            <depends>config-server(&gt;= ${config.dep.version}),statistics-config-processor</depends>
+                                        </deb>
+                                        <assembly combine.children="append">
+                                            <copyFile>
+                                                <path>${project.build.directory}/${project.build.finalName}.jar</path>
+                                                <toDir>${unix.application.lib.dir}</toDir>
+                                            </copyFile>
+                                            <symlink>
+                                                <value>${unix.application.lib.dir}/${project.build.finalName}.jar</value>
+                                                <path>${config.processors.lib.dir}/${project.artifactId}.jar</path>
+                                            </symlink>
+                                        </assembly>
+                                    </configuration>
+                                </execution>
+                            </executions>
                         </plugin>
                     </plugins>
                 </pluginManagement>
