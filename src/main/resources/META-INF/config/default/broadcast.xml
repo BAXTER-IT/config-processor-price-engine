@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/broadcast">
+    
+    <server id="default" node="broadcast1" />
+    
+    <node id="broadcast1" host="192.168.9.197" pricePort="7104" channelPort="7106" />
+    <!-- This should be seted to 7104 as in the config-server/rest/com.baxter.pe/price-engine-blotter/debug,xpdev22/propertiesxml?version=1.0 -->
+    <!-- pricedisplay - uDPPriceParams - ServerPort = -->
+    <node id="broadcast2" host="192.168.9.197" pricePort="7770" channelPort="7104"/>
+    
+</configuration>

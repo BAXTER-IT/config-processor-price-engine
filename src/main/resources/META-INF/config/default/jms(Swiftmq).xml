@@ -1,0 +1,17 @@
+<configuration xmlns="http://baxter-it.com/price-engine/conf/jms" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config">
+	<!-- JMS Nodes -->
+    
+    <node id="jms1" host="localhost" port="8007" router="router1" />
+    <node id="jms2" host="localhost" port="8007" router="router2" />
+    <node id="jms3" host="localhost" port="8007" router="router3" />
+
+    <authentication id="global" username="swiftadmin" password="adminadmin" />
+
+   <authentication id="global" username="swiftadmin" password="adminadmin" />
+   <ssl id="jmsSSL" store="c:/swiftmq_7.5.4_licenced/scripts/win32/clientcerts" storePassword="secret1234"
+        anonCipher="false" />
+
+
+</configuration>
+

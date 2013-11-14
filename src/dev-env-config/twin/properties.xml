@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/generic-properties"
+    xmlns:c="http://baxter-it.com/config/component" xmlns:conf="http://baxter-it.com/config">
+    
+    <property id="runDIServer" value="YES">
+        <c:component id="price-engine-blotter"/>
+    </property>
+    
+</configuration>

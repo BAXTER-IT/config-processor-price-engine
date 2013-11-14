@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log">
+
+    <console-appender name="CONSOLE">
+        <layout>HandOffTester %c{1} [%d{ISO8601}] %m%n</layout>
+    </console-appender>
+   
+    <rolling-file-appender name="FILE_HandOffTester" file="HandOffSystemTester.log" maxSize="5MB" backupIndex="10">
+        <layout>HandOffTester[%d{ISO8601}][%p] - %m%n</layout>
+    </rolling-file-appender>
+
+    <logger name="com.baxter" additivity="false" level="TRACE">
+        <appender-ref ref="FILE_HandOffTester" />
+    </logger>
+
+    <logger name="*" level="TRACE">
+	<appender-ref ref="CONSOLE" />
+    </logger>
+    
+</configuration>

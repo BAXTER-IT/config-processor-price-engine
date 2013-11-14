@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/jvm"
+    xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config">
+
+    <logging id="default" framework="log4j">
+        <c:component id="price-engine-dbserver"/>
+        <c:component id="price-engine-broadcast"/>
+        <c:component id="price-engine-blotterserver"/>
+		<c:component id="price-engine-twserver"/>
+		<c:component id="price-engine-validator"/>
+		<c:component id="price-engine-fwdcontroller"/>
+		<c:component id="price-engine-fwdircontroller"/>
+        <c:component id="price-engine-servlet"/>
+        <c:component id="price-engine-admintool"/>
+        <c:component id="price-engine-blotter"/>
+		<c:component id="price-engine-trackwheel"/>
+		<c:component id="price-engine-fwdmonitor"/>
+        <conf:reference id="log" type="log4j">
+            <conf:parameter name="alias">log4j.xml</conf:parameter>
+        </conf:reference>
+    </logging>
+
+    <logging id="experimental" framework="logback">
+        <c:component id="price-engine-dbserver2"/>
+        <conf:reference id="log" type="logback"> </conf:reference>
+    </logging>
+    
+    <heap id="default" initial="64M" maximum="384M">
+        <c:component id="price-engine-dbserver"/>
+        <c:component id="price-engine-admintool"/>
+        <c:component id="price-engine-blotter"/>
+        <c:component id="price-engine-trackwheel"/>
+        <c:component id="price-engine-broadcast"/>
+    </heap>
+
+    <heap id="advanced" initial="1G" maximum="3G">
+    </heap>
+    <!--
+ -->
+    <option id="defaultProductId" value="-Dcom.baxter.config.productId=com.baxter.pe">
+         <c:component id="price-engine-dbserver"/>
+	 <c:component id="price-engine-broadcast"/>
+         <c:component id="price-engine-blotterserver"/>
+         <c:component id="price-engine-twserver"/> 
+         <c:component id="price-engine-servlet"/>
+         <c:component id="price-engine-trackwheel"/>
+	 <c:component id="price-engine-blotter"/>
+         <c:component id="price-engine-fwdcontroller"/>
+         <c:component id="price-engine-fwdmonitor"/>
+         <c:component id="price-engine-admintool"/>
+	 <c:component id="price-engine-fwdircontroller"/>
+	<c:component id="price-engine-validator"/>
+    <c:component id="di-upstream"/>
+    </option>
+
+ <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-validator">
+         <c:component id="price-engine-validator"/>
+    </option>
+
+    <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-fwdircontroller">
+         <c:component id="price-engine-fwdircontroller"/>
+    </option>
+
+    <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-dbserver">
+         <c:component id="price-engine-dbserver"/>
+    </option>
+
+    <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-servlet">
+         <c:component id="price-engine-servlet"/>
+    </option>
+
+    <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-broadcast">
+         <c:component id="price-engine-broadcast"/>
+    </option>
+
+    <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-blotterserver">
+         <c:component id="price-engine-blotterserver"/>
+    </option>
+
+   <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-twserver">
+         <c:component id="price-engine-twserver"/>
+    </option>
+
+   <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-trackwheel">
+         <c:component id="price-engine-trackwheel"/>
+    </option>
+
+   <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-blotter">
+         <c:component id="price-engine-blotter"/>
+    </option>
+
+  <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-fwdcontroller">
+         <c:component id="price-engine-fwdcontroller"/>
+    </option>
+
+  <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-fwdmonitor">
+         <c:component id="price-engine-fwdmonitor"/>
+    </option>
+
+  <option id="defaultcomponentId" value="-Dcom.baxter.config.componentId=price-engine-admintool">
+         <c:component id="price-engine-admintool"/>
+    </option>
+
+    <option id="forceTHR" value="-XX:+ForceTimeHighResolution">
+        <c:component id="price-engine-admintool"/>
+        <c:component id="price-engine-blotter"/>
+        <c:component id="price-engine-blotterserver"/>
+    </option>
+    
+    <option id="shareoff" value="-Xshare:off">
+        <c:component id="price-engine-broadcast"/>
+    </option>
+    
+    <system id="dbserver-mrt" name="maxReadTrades" value="20">
+        <c:component id="price-engine-dbserver"/>
+    </system>
+    
+    <system id="multapp-spec" name="appSpecificator" param="1">
+        <c:component id="price-engine-fwdcontroller"/>
+        <c:component id="price-engine-fwdircontroller"/>
+        <c:component id="price-engine-twserver"/>
+        <c:component id="price-engine-validator"/>
+    </system>
+    
+    <!-- jmx for broadcast 
+        set JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote.port=6979
+        set JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote.ssl=false
+        set JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote.authenticate=false
+        set JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote
+    -->
+    <!-- spring for broadcast 
+        set JAVA_OPTS=%JAVA_OPTS% -Dspring.managed.application.name="BroadcastBase"
+    -->
+    
+    <system id="logsrv_p2" name="LogServerPort" param="2">
+        <c:component id="price-engine-validator" />
+    </system>
+    
+    <system id="logsrv_p3" name="LogServerPort" param="3">
+        <c:component id="price-engine-twserver" />
+    </system>
+    
+    <!-- TODO Check this port. Why this value? -->
+    <system id="logsrv_bs" name="LogServerPort" value="6704">
+        <c:component id="price-engine-blotterserver" />
+    </system>
+    <system id="swiftmq.reconnect.debug" name="swiftmq.reconnect.debug" value="true">
+        <c:component id="price-engine-fwdmonitor" />
+    </system>
+    
+</configuration>

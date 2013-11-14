@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/broadcast">
+    
+    <server id="default" node="broadcast2" />
+
+</configuration>

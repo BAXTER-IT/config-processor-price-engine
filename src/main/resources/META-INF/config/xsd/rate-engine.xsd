@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://baxter-it.com/price-engine/conf/re"
+    xmlns:tns="http://baxter-it.com/price-engine/conf/re" xmlns:c="http://baxter-it.com/config/component" xmlns:conf="http://baxter-it.com/config"
+    xmlns:t="http://baxter-it.com/config/types" elementFormDefault="qualified">
+
+    <xs:import schemaLocation="types.xsd" namespace="http://baxter-it.com/config/types" />
+    <xs:import schemaLocation="component.xsd" namespace="http://baxter-it.com/config/component" />
+    <xs:import schemaLocation="config.xsd" namespace="http://baxter-it.com/config" />
+
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="engine" type="tns:TNamed" />
+                <xs:element name="observer" type="tns:TObserver" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TNamed">
+        <xs:attribute name="id" type="xs:NCName" use="required" />
+        <xs:attribute name="name" type="xs:string" use="optional" />
+    </xs:complexType>
+
+    <xs:complexType name="TParam">
+        <xs:sequence>
+            <xs:element ref="conf:reference" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:NCName" use="required" />
+        <xs:attribute name="value" type="xs:string" use="optional" />
+    </xs:complexType>
+
+    <xs:complexType name="TObserver">
+        <xs:complexContent>
+            <xs:extension base="c:TWithComponents">
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="component" type="tns:TNamed" />
+                    <xs:element name="host" type="tns:TNamed" />
+                    <xs:element ref="conf:reference" />
+                    <xs:element name="param" type="tns:TParam" />
+                </xs:choice>
+                <xs:attribute name="pingTimeout" type="xs:positiveInteger" use="optional" />
+                <xs:attribute name="rcsTimeout" type="xs:positiveInteger" use="optional" />
+                <xs:attribute name="tpTimeout" type="xs:positiveInteger" use="optional" />
+                <xs:attribute name="cccPeriod" type="xs:positiveInteger" use="optional" />
+                <xs:attribute name="cssPeriod" type="xs:positiveInteger" use="optional" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

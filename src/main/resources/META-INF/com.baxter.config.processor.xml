@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<descriptor xmlns="http://baxter-it.com/config/descriptor"
+	version="1.3" productId="com.baxter.pe" viewer="viewer-pe.xsl">
+	<processors>
+		<processor class="com.baxter.config.processor.impl.AsIsProcessor"
+			type="asis">
+			<!-- TODO add filters for restrictions -->
+		</processor>
+		<processor class="com.baxter.config.processor.impl.DirectoryProcessor"
+			type="dir">
+			<!-- TODO add filters for restrictions -->
+		</processor>
+		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
+			type="log4j">
+			<parameter name="stylesheet">baxterxsl:log4j.xsl</parameter>
+		</processor>
+		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
+			type="logback">
+			<parameter name="stylesheet">baxterxsl:logback.xsl</parameter>
+		</processor>
+		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
+			type="propertiesxml">
+			<parameter name="stylesheet">propertiesxml.xsl</parameter>
+		</processor>
+		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
+			type="cdat">
+			<parameter name="stylesheet">cdat.xsl</parameter>
+		</processor>
+		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
+			type="qfixini">
+			<parameter name="stylesheet">qfixini.xsl</parameter>
+		</processor>
+		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
+			type="clientmessaging">
+			<parameter name="stylesheet">clientmessaging.xsl</parameter>
+		</processor>
+		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
+			type="jvm">
+			<parameter name="stylesheet">jvm-pe.xsl</parameter>
+		</processor>
+		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
+			type="statistics">
+			<parameter name="stylesheet">statistics.xsl</parameter>
+		</processor>
+	</processors>
+	<upgrades>
+		<from version="1.0" toVersion="1.1" />
+        <from version="1.1" toVersion="1.2" />
+        <from version="1.2" toVersion="1.3" />
+	</upgrades>
+</descriptor>

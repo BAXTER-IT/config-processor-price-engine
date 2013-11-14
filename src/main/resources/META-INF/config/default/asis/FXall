@@ -1,0 +1,48 @@
+#TCPI Login Details
+
+#FXall Host Details - use either ssl using tcp or https
+#HOST=ssl://66.119.39.186:443
+#HOST=https://64.209.231.97:443
+
+#use for SQS
+#USERNAME=AUTO@BAXTER1
+#USERNAME=BAXTER1
+#USERNAME=WESTPAC4
+#HOST=ssl://66.119.39.186:443
+
+#use for RFQ
+#USERNAME=AUTO@WESTPAC4
+#USERNAME=WESTPAC3
+#HOST=ssl://64.209.231.110:443
+
+#PASSWD=fxall123 
+#PASSWD=fxallbaxter123 
+
+USERNAME=AUTO@WESTPAC5
+PASSWD=fxall123
+HOST=ssl://64.209.231.116:443
+
+java.protocol.handler.pkgs=progress.message.net
+SSL_CA_CERTIFICATES_DIR=C:\\Users\\Tester02\\git\\price-engine\\price-engine-devel\\target/config\\certs\\Ca
+
+#PROXY Properties
+#USE EITHER SOCKS OR HTTPS PROXY - NOT BOTH
+
+#SOCKS
+#socksProxyHost=<socks proxy host ip>
+#socksProxyPort=<socks proxy port: default 1080>
+
+#HTTPS
+#TUNNELING_PROXY_HOST=<proxy host name>
+#TUNNELING_PROXY_PORT=<proxy host port>
+
+USE_PICKUP=FALSE
+
+#Which connection to use, uncomment and remove unnecessary bits
+#CONNECTION_TYPE=RFQ|SQS
+
+ENABLE_NDF=TRUE
+ENABLE_BLOCK_TRADE=TRUE
+ENABLE_MULTI_ALLOCATION_TRADE=TRUE
+
+ENABLE_SAME_ACCOUNT_SWAP_ALLOCATION=true

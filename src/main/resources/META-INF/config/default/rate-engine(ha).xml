@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/re" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config">
+
+    <engine id="this" name="RateEngine.1" />
+    <engine id="default" name="RateEngine.1" />
+    <engine id="failover" name="RateEngine.2" />
+
+    <observer id="default" pingTimeout="5000" rcsTimeout="30000" cssPeriod="5000" cccPeriod="5000"> </observer>
+
+    <observer id="RateEngine">
+        <c:component id="rate-engine" />
+        <component id="DBServerObserverKey" name="DBServer" />
+        <component id="BlotterServerObserverKey" name="BlotterServer" />
+        <host id="RateEngine.2" name="test03" />
+    </observer>
+
+    <observer id="DBServer">
+        <c:component id="price-engine-dbserver" />
+        <component id="DBServer" name="com.baxter.genius.DBServer" />
+        <host id="RateEngine.2" name="test03" />
+        <conf:reference id="RateEngine.2" type="propertiesxml">
+            <conf:variant id="ha" />
+        </conf:reference>
+    </observer>
+
+    <observer id="BlotterServer" cssPeriod="5000">
+        <c:component id="price-engine-blotterserver" />
+        <component id="BlotterServer" name="com.baxter.genius.BlotterServer" />
+    </observer>
+
+    <observer id="BroadcastBase" pingTimeout="5000" rcsTimeout="30000" tpTimeout="30000" cssPeriod="5000"
+        cccPeriod="5000">
+        
+        <c:component id="price-engine-broadcast" />
+        
+        <param id="failoverNodeId" value="2" />
+        
+        <!-- There is no need for key "RateEngine" if RateEngine HA enabled -->
+        <param id="RateEngine" value="true" />
+
+        <conf:reference id="RateEngine.1" type="propertiesxml" skipVariants="true"> </conf:reference>
+        <conf:reference id="RateEngine.2" type="propertiesxml">
+            <conf:variant id="ha" />
+        </conf:reference>
+
+        <component id="BroadcastBase" name="com.baxter.genius.publishing.BroadcastBase" />
+
+        <host id="outgoing" name="localhost" />
+        <host id="node" name="localhost" />
+    </observer>
+
+    <observer id="AdminTool">
+        <c:component id="price-engine-admintool" />
+        <conf:reference id="RateEngine.1" type="propertiesxml" skipVariants="true"> </conf:reference>
+        <conf:reference id="RateEngine.2" type="propertiesxml">
+            <conf:variant id="ha" />
+        </conf:reference>
+    </observer>
+    
+    <observer id="Servlet">
+        <c:component id="price-engine-servlet" />
+        <conf:reference id="RateEngine.1" type="propertiesxml" skipVariants="true"> </conf:reference>
+        <conf:reference id="RateEngine.2" type="propertiesxml">
+            <conf:variant id="ha" />
+        </conf:reference>
+    </observer>
+    
+    <observer id="BlotterClient">
+        <c:component id="price-engine-blotter" />
+        <conf:reference id="RateEngine.1" type="propertiesxml" skipVariants="true"> </conf:reference>
+        <conf:reference id="RateEngine.2" type="propertiesxml">
+            <conf:variant id="ha" />
+        </conf:reference>
+    </observer>
+    
+    <observer id="TrackwheelClient">
+        <c:component id="price-engine-trackwheel" />
+        <conf:reference id="RateEngine.1" type="propertiesxml" skipVariants="true"> </conf:reference>
+        <conf:reference id="RateEngine.2" type="propertiesxml">
+            <conf:variant id="ha" />
+        </conf:reference>
+    </observer>
+    
+    <observer id="FwdController">
+        <c:component id="price-engine-fwdcontroller" />
+        <param id="currencypairs" >
+            <conf:reference id="currencypairs" type="cdat" skipVariants="true"> </conf:reference>
+        </param>
+        <component id="FwdController" name="com.baxter.genius.fwd.FwdControllerWithPillars" />
+    </observer>
+    
+    <observer id="Validator">
+        <c:component id="price-engine-validator" />
+        <param id="currencypairs" >
+            <conf:reference id="currencypairs" type="cdat" skipVariants="true"> </conf:reference>
+        </param>
+        <component id="Validator" name="com.baxter.genius.Validator" />
+    </observer>
+    
+    <observer id="TrackwheelServer">
+        <c:component id="price-engine-twserver" />
+        <param id="currencypairs" >
+            <conf:reference id="currencypairs" type="cdat" skipVariants="true"> </conf:reference>
+        </param>
+        <component id="TrackwheelServer" name="com.baxter.trackwheel.server.TWServer" />
+    </observer>
+    
+    <observer id="FwdMonitor">
+        <c:component id="price-engine-fwdmonitor" />
+        <conf:reference id="RateEngine.1" type="propertiesxml" skipVariants="true"> </conf:reference>
+        <conf:reference id="RateEngine.2" type="propertiesxml">
+            <conf:variant id="ha" />
+        </conf:reference>
+    </observer>
+    
+</configuration>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/applications"  xmlns:c="http://baxter-it.com/config/component">
+    
+    <c:component id="price-engine-admintool" >
+        <port id="uniqueApp">33379</port>
+    </c:component>
+    
+    <c:component id="price-engine-blotter" >
+        <port id="uniqueApp">13010</port>
+    </c:component>
+    
+    <c:component id="price-engine-fwdmonitor" >
+        <port id="uniqueApp">33343</port>
+    </c:component>
+    
+    <c:component id="price-engine-trackwheel" >
+        <port id="uniqueApp">33340</port>
+    </c:component>
+    
+    <c:component id="trading-tool" >
+    </c:component>
+    
+</configuration>    

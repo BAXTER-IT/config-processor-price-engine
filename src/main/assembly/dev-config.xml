@@ -1,0 +1,67 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <id>dev-env</id>
+    <formats>
+        <format>dir</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <files>
+        <!-- Development Variant -->
+        <file>
+            <source>src/dev-env-config/broadcast.xml</source>
+            <filtered>true</filtered>
+            <destName>broadcast(${devel.config.env.variant}).xml</destName>
+        </file>
+        <file>
+            <source>src/dev-env-config/dashboard-servlet.xml</source>
+            <filtered>true</filtered>
+            <destName>dashboard-servlet(${devel.config.env.variant}).xml</destName>
+        </file>
+        <file>
+            <source>src/dev-env-config/db.xml</source>
+            <filtered>true</filtered>
+            <destName>db(${devel.config.env.variant}).xml</destName>
+        </file>
+        <file>
+            <source>src/dev-env-config/jms.xml</source>
+            <filtered>true</filtered>
+            <destName>jms(${devel.config.env.variant}).xml</destName>
+        </file>
+        <file>
+            <source>src/dev-env-config/jvm.xml</source>
+            <filtered>true</filtered>
+            <destName>jvm(${devel.config.env.variant}).xml</destName>
+        </file>
+        <file>
+            <source>src/dev-env-config/log.xml</source>
+            <filtered>true</filtered>
+            <destName>log(${devel.config.env.variant}).xml</destName>
+        </file>
+        <file>
+            <source>src/dev-env-config/properties.xml</source>
+            <filtered>true</filtered>
+            <destName>properties(${devel.config.env.variant}).xml</destName>
+        </file>
+        <!-- Development Twin Variant -->
+        <file>
+            <source>src/dev-env-config/twin/applications.xml</source>
+            <filtered>true</filtered>
+            <destName>applications(${twin.config.env.variant}).xml</destName>
+        </file>
+        <file>
+            <source>src/dev-env-config/twin/jvm.xml</source>
+            <filtered>true</filtered>
+            <destName>jvm(${twin.config.env.variant}).xml</destName>
+        </file>
+        <file>
+            <source>src/dev-env-config/twin/udp-price.xml</source>
+            <filtered>true</filtered>
+            <destName>udp-price(${twin.config.env.variant}).xml</destName>
+        </file>
+        <file>
+            <source>src/dev-env-config/twin/properties.xml</source>
+            <filtered>true</filtered>
+            <destName>properties(${twin.config.env.variant}).xml</destName>
+        </file>
+    </files>
+</assembly>

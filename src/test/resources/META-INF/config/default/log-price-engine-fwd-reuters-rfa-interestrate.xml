@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log">
+
+    <console-appender name="CONSOLE">
+        <layout>Reuters %c{1} [%d{ISO8601}] %m%n</layout>
+    </console-appender>
+   
+    <rolling-file-appender name="FILE_Reuters" file="Reuters.log" maxSize="5MB" backupIndex="10">
+        <layout>Reuters[%d{ISO8601}][%p] - %m%n</layout>
+    </rolling-file-appender>
+
+    <logger name="ROOT" level="DEBUG">
+	<appender-ref ref="FILE_Reuters" />
+    </logger>
+    
+</configuration>

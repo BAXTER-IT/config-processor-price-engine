@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://baxter-it.com/price-engine/conf/qfix"
+    xmlns:t="http://baxter-it.com/config/types" xmlns:tns="http://baxter-it.com/price-engine/conf/qfix" xmlns:conf="http://baxter-it.com/config"
+    elementFormDefault="qualified">
+
+    <xs:import schemaLocation="config.xsd" namespace="http://baxter-it.com/config" />
+    <xs:import schemaLocation="types.xsd" namespace="http://baxter-it.com/config/types" />
+
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="time" type="tns:TTime" />
+                <xs:element name="connection" type="tns:TConnection" />
+                <xs:element name="defaults" type="tns:TDefaults" />
+                <xs:element name="session" type="tns:TSession" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TSession">
+        <xs:sequence>
+            <xs:element ref="conf:reference" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:NCName" use="required" />
+        <xs:attribute name="beginString" type="xs:string" use="optional" />
+        <xs:attribute name="time" type="xs:IDREF" use="optional" />
+        <xs:attribute name="connection" type="xs:IDREF" use="optional" />
+        <xs:attribute name="target" type="xs:string" use="optional" />
+        <xs:attribute name="heartbeatInterval" type="xs:positiveInteger" use="optional" />
+    </xs:complexType>
+
+    <xs:complexType name="TConnection">
+        <xs:sequence>
+            <xs:element name="ssl" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="conf:reference" minOccurs="0" />
+                    </xs:sequence>
+                    <xs:attribute name="id" type="xs:NCName" use="optional" />
+                    <xs:attribute name="password" type="xs:string" use="optional" />
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:NCName" use="required" />
+        <xs:attribute name="host" type="xs:string" use="optional" />
+        <xs:attribute name="port" type="xs:positiveInteger" use="optional" />
+        <xs:attribute name="resetOnLogon" type="t:TBoolean" use="optional" />
+    </xs:complexType>
+
+    <xs:complexType name="TTime">
+        <xs:attribute name="id" type="xs:NCName" use="required" />
+        <xs:attribute name="start" type="tns:TClockTime" use="optional" />
+        <xs:attribute name="end" type="tns:TClockTime" use="optional" />
+        <xs:attribute name="startDay" type="tns:TDayOfWeek" use="optional" />
+        <xs:attribute name="endDay" type="tns:TDayOfWeek" use="optional" />
+    </xs:complexType>
+
+    <xs:complexType name="TDefaults">
+        <xs:sequence>
+            <xs:element name="default" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="id" type="xs:NCName" use="optional" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:NCName" use="required" />
+    </xs:complexType>
+
+    <xs:simpleType name="TClockTime">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d\d:\d\d:\d\d" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TDayOfWeek">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SUNDAY" />
+            <xs:enumeration value="MONDAY" />
+            <xs:enumeration value="TUESDAY" />
+            <xs:enumeration value="WEDNESDAY" />
+            <xs:enumeration value="THURSDAY" />
+            <xs:enumeration value="FRIDAY" />
+            <xs:enumeration value="SATURDAY" />
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

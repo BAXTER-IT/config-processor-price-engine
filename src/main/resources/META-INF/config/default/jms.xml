@@ -1,0 +1,355 @@
+<configuration xmlns="http://baxter-it.com/price-engine/conf/jms"
+	xmlns:c="http://baxter-it.com/config/component" xmlns:conf="http://baxter-it.com/config">
+
+	<!-- JMS Nodes -->
+	<!-- See in jms(Swiftmy).xml variants -->
+	<node id="jms1" host="pesangui" port="8007" router="router1" />
+	<node id="jms2" host="pesangui" port="8007" router="router2" />
+	<node id="jms3" host="pesangui" port="8007" router="router3" />
+
+	<authentication id="global" username="swiftadmin"
+		password="adminadmin" />
+
+	<authentication id="auth1" username="anonymous"
+		password="" />
+	<authentication id="auth2" username="anonymous"
+		password="" />
+	<authentication id="auth3" username="anonymous"
+		password="" />
+	<authentication id="handoff" username="testUser1"
+		password="test1" />
+	<!-- See in jms(Swiftmy).xml variants -->
+	<!-- <ssl id="jmsSSL" store="c:/swiftmq_7.5.4_licenced/scripts/win32/clientcerts" 
+		storePassword="secret1234" anonCipher="false" /> -->
+
+	<manager id="abos" namingContextFactory="org.jnp.interfaces.NamingContextFactory"
+		providerUrl="jnp://abosfxcdev:1099" queueConnectionFactory="ConnectionFactory" />
+
+	<topic id="pluginToServlet" name="ServletStream" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-servlet" />
+		<c:component id="client-messaging" />
+		<c:component id="price-engine-broadcast-plugin" />
+		<c:component id="price-engine-broadcast" />
+	</topic>
+
+	<queue id="servletToPlugin" name="ServletTrade" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-servlet" />
+		<c:component id="client-messaging" />
+		<c:component id="price-engine-broadcast-plugin" />
+		<c:component id="price-engine-broadcast" />
+	</queue>
+
+
+	<queue id="toDb" name="DBRequest" node="jms1" authentication="auth1"
+		compressed="true" reconnect="false">
+		<c:component id="price-engine-dbserver" />
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-admintool" />
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-trackwheel" />
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdircontroller" />
+		<c:component id="price-engine-fwdmonitor" />
+		<c:component id="price-engine-servlet" />
+		<c:component id="price-engine-validator" />
+		<c:component id="di-upstream" />
+		<c:component id="demo-vendor" />
+	</queue>
+
+	<topic id="broadcast" name="DBBroadcast" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-dbserver" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-admintool" />
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-trackwheel" />
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdircontroller" />
+		<c:component id="price-engine-fwdmonitor" />
+		<c:component id="price-engine-validator" />
+		<c:component id="price-engine-servlet" />
+		<c:component id="di-upstream" />
+	</topic>
+
+	<topic id="JmsStreamTopic" name="ServletStream" node="jms3"
+		authentication="auth3">
+		<c:component id="price-engine-servlet" />
+		<c:component id="client-messaging" />
+	</topic>
+
+	<queue id="trade2Db" name="Trade2DB" node="jms1" authentication="auth1">
+		<c:component id="price-engine-dbserver" />
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="dcpk-receiver" />
+	</queue>
+
+	<topic id="vendor2validator" name="Vendors2Validator" node="jms1"
+		authentication="auth2">
+		<c:component id="price-engine-validator" />
+		<c:component id="demo-vendor" />
+	</topic>
+
+	<topic id="validator2tws" name="Validator2TWS" node="jms2"
+		authentication="auth2">
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-validator" />
+	</topic>
+
+	<topic id="tws2manufacturer" name="TWS2Manufacturer" node="jms2"
+		authentication="auth2">
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-twserver" />
+	</topic>
+
+	<queue id="twc2tws" name="TWC2Server" node="jms2" authentication="auth2">
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-trackwheel" />
+		<c:component id="price-engine-validator" />
+	</queue>
+
+	<topic id="tws2twc" name="TWS2Client" node="jms2" authentication="auth2">
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-trackwheel" />
+	</topic>
+
+	<topic id="vendor2fwdctrl" name="FwdSource2Controller" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdircontroller" />
+	</topic>
+
+	<topic id="vendor2fwdirctrl" name="FwdIRSource2Controller" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-fwdircontroller" />
+	</topic>
+
+	<queue id="fwdmon2fwdctrl" name="C2SFwdReq" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdircontroller" />
+		<c:component id="price-engine-fwdmonitor" />
+	</queue>
+
+	<topic id="fwdctrl2fwdmon" name="S2CFwdReq" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdircontroller" />
+		<c:component id="price-engine-fwdmonitor" />
+	</topic>
+
+	<topic id="fwdctrl2publisher" name="FwdController2Publisher"
+		node="jms1" authentication="auth1">
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-validator" />
+	</topic>
+
+	<topic id="fwdIRctrl2publisher" name="FwdIRController2Publisher"
+		node="jms1" authentication="auth1">
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-fwdircontroller" />
+	</topic>
+
+	<queue id="blotterTrade" name="BlotterTrade" node="jms2"
+		authentication="auth1">
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-blotter" />
+	</queue>
+
+	<topic id="blotterServer2Client" name="BlotterS2C" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-blotter" />
+	</topic>
+
+	<topic id="blotterPrice" name="BlotterPrice" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-blotter" />
+	</topic>
+
+	<topic id="client2BlotterServer" name="BlotterC2S" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="di-upstream" />
+	</topic>
+
+	<topic id="client2DIServer" name="Client2DIServer" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-blotter" />
+	</topic>
+
+	<queue id="diServer2Client" name="DIServer2Client" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-blotter" />
+	</queue>
+
+	<queue id="diServerSenderQueue" name="DIServerSender" node="jms1"
+		authentication="auth1">
+	</queue>
+
+	<!--<queue id="xmlManager.structurales2DB" name="Structurales2DB" node="jms1" 
+		authentication="auth1"> <c:component id="price-engine-dbserver" /> </queue> 
+		<queue id="xmlManager.db2Structurales" name="DB2Structurales" node="jms1" 
+		authentication="auth1"> <c:component id="price-engine-dbserver" /> </queue> -->
+
+	<queue id="positionManager.client2PositionManagerServer" name="Client2PositionManagerServer"
+		node="jms1" authentication="auth2">
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-trackwheel" />
+	</queue>
+
+	<topic id="positionManager.positionManagerServer2Client" name="PositionManagerServer2Client"
+		node="jms2" authentication="auth2">
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-twserver" />
+	</topic>
+
+	<topic id="positionManager.positionManagerServer2TW" name="PositionManagerServer2TW"
+		node="jms2" authentication="auth2">
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-twserver" />
+	</topic>
+
+	<queue id="positionManager.HedgeClientMessaging" name="BlotterServer2HedgeClientMessaging"
+		node="jms2" authentication="auth2">
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+	</queue>
+
+	<topic id="toSender" name="FWDSVSender" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdmonitor" />
+	</topic>
+
+	<topic id="fromReceiver" name="FWDSVReceiver" node="jms1"
+		authentication="auth1">
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdmonitor" />
+	</topic>
+
+	<!-- SantanderProperties -->
+	<topic id="DI2Upstream" name="DI2Upstream" node="jms1"
+		authentication="auth1">
+		<c:component id="di-upstream" />
+	</topic>
+
+	<topic id="Upstream2DI" name="Upstream2DI" node="jms1"
+		authentication="auth1">
+		<c:component id="di-upstream" />
+	</topic>
+
+	<queue id="Vendor2DOBAlgo" name="Vendor2DOBAlgo" node="jms3"
+		authentication="auth3">
+	</queue>
+
+	<queue id="marketDataFromBroadcast2BlotterServer" name="MarketDataFromBroadcast2BS"
+		node="jms1" authentication="auth1">
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+	</queue>
+
+	<queue id="creditcheckmanager.receiver" name="CreditCheckReceiver"
+		node="jms2" authentication="auth1">
+		<c:component id="price-engine-broadcast" />
+	</queue>
+
+	<queue id="creditcheckmanager.sender" name="CreditCheckSender"
+		node="jms2" authentication="auth1">
+		<c:component id="price-engine-broadcast" />
+	</queue>
+
+	<topic id="creditcheckmanager.heartbeat" name="CreditCheckHeartbeat"
+		node="jms2" authentication="auth1">
+		<c:component id="price-engine-broadcast" />
+	</topic>
+
+	<!-- TODO check price-engine-fwdircontroller, and other components. put 
+		here all the channels. if some are related to HA -->
+
+	<topic id="handoffmanager.HandOff2Upstream" name="HandOff2Upstream"
+		node="jms1" authentication="handoff">
+		<c:component id="handoff-tester" />
+	</topic>
+
+	<queue id="dcpk.HandOffTestReceiver" name="HandOffTestReceiver"
+		node="jms1" authentication="handoff">
+		<c:component id="dcpk-receiver" />
+	</queue>
+
+	<queue id="dcpk.DCPKRequest" name="DcpkRequest" node="jms1"
+		authentication="handoff">
+		<c:component id="dcpk-request" />
+	</queue>
+
+	<queue id="stpQueues.stpQueue1" name="HandOffTestReceiver" node="jms1"
+		authentication="auth1" reconnect="false">
+		<c:component id="price-engine-broadcast" />
+	</queue>
+
+	<queue id="stpQueues.stpQueue2" name="Trade2DB" node="jms2"
+		authentication="auth2" reconnect="false">
+		<c:component id="price-engine-broadcast" />
+	</queue>
+
+	<queue id="dcpkRequest" name="DcpkRequest" node="jms1"
+		authentication="auth1" reconnect="false">
+		<c:component id="price-engine-broadcast" />
+	</queue>
+
+	<topic id="handoffmanager.Upstream2HandOff" name="Upstream2HandOff"
+		node="jms1" authentication="handoff">
+		<c:component id="handoff-tester" />
+	</topic>
+
+	<queue id="abos.potPositionSenderQueueName" name="queue/potPositionSenderQueue"
+		manager="abos">
+		<!--c:component id="price-engine-blotterserver" / -->
+	</queue>
+
+	<queue id="abos.potPositionReceiverQueueName" name="queue/potPositionReceiverQueue"
+		manager="abos">
+		<!--c:component id="price-engine-blotterserver" / -->
+	</queue>
+
+	<queue id="stpQueues.stpQueue1" name="HandOffTestReceiver" node="jms1"
+		node2="jms2" authentication="auth1" reconnect="false">
+		<!--c:component id="price-engine-broadcast" / -->
+	</queue>
+
+	<queue id="stpQueues.stpQueue2" name="Trade2DB" node="jms1"
+		node2="jms2" authentication="auth2" reconnect="false">
+		<!--c:component id="price-engine-broadcast" / -->
+	</queue>
+
+	<queue id="dcpkRequest" name="DcpkRequest" node="jms1" node2="jms2"
+		authentication="auth1" reconnect="false">
+		<c:component id="price-engine-broadcast" />
+	</queue>
+
+	<queue id="lastlookmanager.sender" name="LastLookSender" node="jms1"
+		node2="jms2" authentication="auth1" reconnect="false">
+		<c:component id="price-engine-broadcast" />
+	</queue>
+	<queue id="lastlookmanager.receiver" name="LastLookReceiver"
+		node="jms1" node2="jms2" authentication="auth1" reconnect="false">
+		<c:component id="price-engine-broadcast" />
+	</queue>
+</configuration>

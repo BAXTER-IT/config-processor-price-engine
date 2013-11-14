@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/source-catalogue"
+	xmlns:conf="http://baxter-it.com/config" xmlns:c="http://baxter-it.com/config/component">
+
+	<source prefix="applications">
+		<!-- TODO add support for component id '*', which designates any component -->
+		<c:component id="price-engine-admintool" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-fwdmonitor" />
+		<c:component id="price-engine-trackwheel" />
+		<c:component id="trading-tool" />
+		<c:component id="price-engine-dbserver" />
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdircontroller" />
+		<c:component id="price-engine-validator" />
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-servlet" />
+
+		<c:component id="demo-vendor" />
+		<c:component id="di-upstream" />
+		<c:component id="handoff-tester" />
+	</source>
+
+	<source prefix="rate-engine">
+		<c:component id="price-engine-admintool" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-fwdmonitor" />
+		<c:component id="price-engine-trackwheel" />
+		<c:component id="trading-tool" />
+		<c:component id="price-engine-dbserver" />
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdircontroller" />
+		<c:component id="price-engine-validator" />
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-servlet" />
+		<c:component id="rate-engine" />
+	</source>
+
+	<source prefix="jms">
+		<c:component id="price-engine-admintool" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-fwdmonitor" />
+		<c:component id="price-engine-trackwheel" />
+		<c:component id="price-engine-dbserver" />
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdircontroller" />
+		<c:component id="price-engine-validator" />
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-servlet" />
+		<c:component id="price-engine-broadcast-plugin" />
+
+		<c:component id="demo-vendor" />
+		<c:component id="di-upstream" />
+		<c:component id="handoff-tester" />
+		<c:component id="reuters-rfa"/>
+	</source>
+
+	<source prefix="properties">
+		<c:component id="price-engine-admintool" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-fwdmonitor" />
+		<c:component id="price-engine-trackwheel" />
+		<c:component id="trading-tool" />
+		<c:component id="price-engine-dbserver" />
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-broadcast-plugin" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-fwdcontroller" />
+		<c:component id="price-engine-fwdircontroller" />
+		<c:component id="price-engine-validator" />
+		<c:component id="price-engine-twserver" />
+		<c:component id="price-engine-servlet" />
+
+		<c:component id="demo-vendor" />
+		<c:component id="handoff-tester" />
+        <c:component id="di-upstream" />
+	</source>
+
+	<source prefix="gui">
+		<c:component id="price-engine-admintool" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-fwdmonitor" />
+		<c:component id="price-engine-trackwheel" />
+		<c:component id="trading-tool" />
+
+		<c:component id="demo-vendor" />
+        <c:component id="di-upstream" />
+	</source>
+
+	<source prefix="snmp">
+		<c:component id="price-engine-admintool" />
+	</source>
+
+	<source prefix="udp-price">
+		<c:component id="price-engine-admintool" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-validator" />
+	</source>
+
+	<source prefix="broadcast">
+		<c:component id="price-engine-broadcast" />
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-blotterserver" />
+	</source>
+
+	<source prefix="currencies">
+		<c:component id="price-engine-blotter" />
+		<c:component id="price-engine-fwdmonitor" />
+		<c:component id="price-engine-trackwheel" />
+		<c:component id="trading-tool" />
+	</source>
+
+	<source prefix="dashboard-servlet">
+		<c:component id="trading-tool" />
+	</source>
+
+	<source prefix="jaas">
+		<c:component id="price-engine-dbserver" />
+	</source>
+
+	<source prefix="db">
+		<c:component id="price-engine-blotterserver" />
+		<c:component id="price-engine-dbserver" />
+	</source>
+
+	<embedded>
+		<c:component id="price-engine-blotter" />
+		<values>
+			<conf:reference id="tradingToolConfig" type="propertiesxml"
+				componentId="trading-tool" />
+		</values>
+	</embedded>
+
+</configuration>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties xmlns="http://baxter-it.com/config/pe/properties" version="1.0">
+    <group key="xmlManager">
+        <group key="structuralesUser">
+            <entry key="xmlUserId">m</entry>
+        </group>
+    </group>
+    <group key="xmlManager">
+        <group key="structuralesUser">
+            <entry key="password">p</entry>
+        </group>
+    </group>
+    <group key="xmlManager">
+        <entry key="nick">bob</entry>
+    </group>
+        <group key="a">
+        <group key="b">
+            <group key="c">
+                <group key="d">
+                    <group key="e">
+                        <entry key="f">test</entry>
+                    </group>
+                </group>
+            </group>
+        </group>
+    </group>
+    <group key="a">
+        <group key="b">
+            <group key="c">
+                <entry key="m">100</entry>
+            </group>
+        </group>
+    </group>
+    <group key="toDb">
+        <entry key="QName">DBRequest</entry>
+        <entry key="QRouter">router1</entry>
+        <entry key="Host">localhost</entry>
+        <entry key="Port">4001</entry>
+        <entry key="UserName">anonymous</entry>
+        <entry key="Password"/>
+    </group>
+    <group key="broadcast">
+        <entry key="TName">DBBroadcast</entry>
+        <entry key="Host">localhost</entry>
+        <entry key="Port">4001</entry>
+        <entry key="UserName">anonymous</entry>
+        <entry key="Password"/>
+    </group>
+    <group key="trade2Db">
+        <entry key="QName">Trade2DB</entry>
+        <entry key="QRouter">router3</entry>
+        <entry key="Host">localhost</entry>
+        <entry key="Port">4003</entry>
+        <entry key="UserName">anonymous</entry>
+        <entry key="Password"/>
+    </group>
+    <entry key="e2">localhost</entry>
+    <group key="xmlManager">
+        <group key="structurales2DB">
+            <entry key="QName">Structurales2DB</entry>
+            <entry key="QRouter">router1</entry>
+            <entry key="Host">localhost</entry>
+            <entry key="Port">4001</entry>
+            <entry key="UserName">anonymous</entry>
+            <entry key="Password"/>
+        </group>
+    </group>
+    <group key="xmlManager">
+        <group key="db2Structurales">
+            <entry key="QName">DB2Structurales</entry>
+            <entry key="QRouter">router1</entry>
+            <entry key="Host">localhost</entry>
+            <entry key="Port">4001</entry>
+            <entry key="UserName">anonymous</entry>
+            <entry key="Password"/>
+        </group>
+    </group>
+    <entry key="e1">localhost</entry>
+</properties>

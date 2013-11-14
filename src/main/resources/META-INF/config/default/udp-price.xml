@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/udp-price" xmlns:c="http://baxter-it.com/config/component">
+
+    <connection id="udpPriceParams" port="6791">
+        <c:component id="price-engine-admintool" />
+        <server id="default" host="192.168.9.197" port="6788" />
+    </connection>
+
+    <connection id="uDPClient2Server.uDPConnectionParam1" port="7795">
+        <c:component id="price-engine-blotter" />
+        <server id="default" broadcastId="broadcast1" broadcastMode="channel" />
+    </connection>
+
+    <connection id="uDPClient2Server.uDPConnectionParam2" port="7796">
+        <c:component id="price-engine-blotter" />
+        <server id="default" broadcastId="broadcast1" broadcastMode="channel" />
+    </connection>
+
+    <connection id="pricedisplay.uDPPriceParams" port="7792">
+        <c:component id="price-engine-blotter" />
+        <server id="default" broadcastId="broadcast1" broadcastMode="price" />
+    </connection>
+    <connection id="mmm.broadcast.1" port="17000">
+        <c:component id="price-engine-blotterserver" />
+        <server id="default" broadcastId="broadcast1" broadcastMode="price" />
+    </connection>
+
+    <!-- Actually this should be in an HA variant file -->
+    <connection id="mmm.broadcast.2" port="17002">
+        <c:component id="price-engine-blotterserver" />
+        <server id="default" broadcastId="broadcast2" broadcastMode="price" />
+    </connection>
+
+
+
+    <!-- <group key="UDPPriceParams"> -->
+    <!-- <entry key="ClientPort">8000-8050</entry> -->
+    <!-- <entry key="ClientPort2">8051-8100</entry> -->
+    <!-- <entry key="ServerHost" pretag="broadcastNodeHost" /> -->
+    <!-- <entry key="ServerPort" pretag="broadcastNodePricePort" /> -->
+    <!-- <entry key="ServerHost2" pretag="broadcastNodeHost2" /> -->
+    <!-- <entry key="ServerPort2" pretag="broadcastNodePricePort2" /> -->
+    <!-- </group> -->
+
+
+    <connection id="UDPPriceParams" port="8000-8050">
+        <c:component id="price-engine-validator" />
+        <server id="default" host="192.168.9.197" port="7104" />
+    </connection>
+
+</configuration>

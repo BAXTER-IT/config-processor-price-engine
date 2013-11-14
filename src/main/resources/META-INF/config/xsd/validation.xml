@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validation xmlns="http://baxter-it.com/config/descriptor">
+
+    <case schema="applications.xsd">
+    </case>
+
+    <case schema="broadcast.xsd">
+    </case>
+
+    <case schema="client-messaging.xsd">
+    </case>
+
+    <case schema="currencies.xsd">
+    </case>
+
+    <case schema="database.xsd">
+    </case>
+
+    <case schema="gui.xsd">
+    </case>
+
+    <case schema="jms.xsd">
+    </case>
+
+    <case schema="jvm.xsd">
+    </case>
+
+    <case schema="log.xsd">
+    </case>
+
+    <case schema="properties.xsd">
+    </case>
+
+    <case schema="quickfix.xsd">
+    </case>
+
+    <case schema="rate-engine.xsd">
+    </case>
+
+    <case schema="servlet.xsd">
+    </case>
+
+    <case schema="snmp.xsd">
+    </case>
+
+    <case schema="udp-price.xsd">
+    </case>
+
+</validation>

@@ -1,0 +1,62 @@
+<configuration xmlns="http://baxter-it.com/price-engine/conf/jms" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config">
+
+    <node id="jms1" host="${devel.cfg.jms.host}" port="${devel.cfg.jms.port1}"/>
+    <node id="jms2" host="${devel.cfg.jms.host}" port="${devel.cfg.jms.port2}"/>
+    <node id="jms3" host="${devel.cfg.jms.host}" port="${devel.cfg.jms.port3}"/>
+    
+    <topic id="vendor2validator" >
+        <c:component id="demo-vendor" />
+    </topic>
+    
+    <queue id="toDb">
+        <c:component id="demo-vendor" />
+        <c:component id="di-upstream" />
+    </queue>
+    
+    <topic id="broadcast" >
+        <c:component id="demo-vendor" />
+        <c:component id="di-upstream" />
+    </topic>
+    
+    <queue id="Vendor2DOBAlgo" >
+        <c:component id="demo-vendor" />
+    </queue>
+    
+    <topic id="vendor2fwdctrl" >
+        <c:component id="demo-vendor" />
+    </topic>
+    
+    <topic id="vendor2fwdirctrl">
+        <c:component id="demo-vendor" />
+    </topic>
+    
+    <topic id="DI2Upstream">
+        <c:component id="di-upstream" />
+    </topic>
+    
+    <topic id="Upstream2DI">
+        <c:component id="di-upstream" />
+    </topic>
+    
+    <topic id="client2BlotterServer">
+        <c:component id="di-upstream" />
+    </topic>
+    
+    <topic id="handoffmanager.HandOff2Upstream">
+        <c:component id="handoff-tester" />
+    </topic>
+    
+    <topic id="handoffmanager.Upstream2HandOff">
+        <c:component id="handoff-tester" />
+    </topic>
+    
+    <topic id="apama.sender" name="EppCommunicator2Apama" node="jms1" authentication="auth1">
+        <c:component id="demo-vendor" />
+    </topic>
+    
+    <topic id="apama.receiver" name="Apama2EppCommunicator" node="jms1" authentication="auth1">
+        <c:component id="demo-vendor" />
+    </topic>
+    
+</configuration>

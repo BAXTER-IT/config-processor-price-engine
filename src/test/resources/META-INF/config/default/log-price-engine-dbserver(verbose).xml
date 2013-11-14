@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log">
+
+    <logger name="ROOT" level="TRACE">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <logger name="com.baxter.pe" level="TRACE">
+        <appender-ref ref="DBSERVER_FILE" />
+    </logger>
+
+</configuration>

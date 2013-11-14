@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/jvm"
+    xmlns:c="http://baxter-it.com/config/component"> 
+
+
+    <debug id="dt_socket_localhost_nowait" >
+        <c:component id="price-engine-admintool">
+            <port id="debug">8792</port> 
+        </c:component>
+        <c:component id="price-engine-blotter">
+            <port id="debug">8793</port> 
+        </c:component>
+        <c:component id="price-engine-trackwheel">
+            <port id="debug">8794</port> 
+        </c:component>
+    </debug>
+    
+</configuration>

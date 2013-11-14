@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/currencies"
+    xmlns:c="http://baxter-it.com/config/component">
+
+    <currencyPair id="AU">
+        <c:component id="price-engine-validator">
+            <port id="default">6766</port>
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="ZX">
+        <c:component id="price-engine-validator">
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="EU">
+        <c:component id="price-engine-validator">
+            <port id="default">6768</port>
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="YY">
+        <c:component id="price-engine-validator">
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="YP">
+    </currencyPair>
+
+    <currencyPair id="YF">
+    </currencyPair>
+
+    <currencyPair id="YD">
+        <c:component id="price-engine-validator">
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="NS">
+    </currencyPair>
+
+    <currencyPair id="RK">
+        <c:component id="price-engine-validator">
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="RZ">
+        <c:component id="price-engine-validator">
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="GB">
+        <c:component id="price-engine-validator">
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="EJ">
+        <c:component id="price-engine-validator">
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="AB">
+        <c:component id="price-engine-validator">
+        </c:component>
+    </currencyPair>
+
+    <currencyPair id="SY">
+    </currencyPair>
+
+    <currencyPair id="NS">
+    </currencyPair>
+
+    <currencyPair id="KU">
+    </currencyPair>
+
+    <currencyPair id="EP">
+    </currencyPair>
+
+</configuration>

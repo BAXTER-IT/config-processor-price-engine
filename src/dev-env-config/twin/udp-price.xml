@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/udp-price" xmlns:c="http://baxter-it.com/config/component">
+
+    <connection id="udpPriceParams" port="6798">
+        <c:component id="price-engine-admintool" />
+    </connection>
+    
+    <connection id="uDPClient2Server.uDPConnectionParam1" port="7895">
+        <c:component id="price-engine-blotter" />
+    </connection>
+
+    <connection id="uDPClient2Server.uDPConnectionParam2" port="7896">
+        <c:component id="price-engine-blotter" />
+    </connection>
+
+    <connection id="pricedisplay.uDPPriceParams" port="7892">
+        <c:component id="price-engine-blotter" />
+    </connection>
+
+</configuration>

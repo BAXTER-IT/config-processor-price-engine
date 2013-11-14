@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://baxter-it.com/price-engine/conf/currencies"
+    xmlns:tns="http://baxter-it.com/price-engine/conf/currencies" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config" xmlns:t="http://baxter-it.com/config/types" elementFormDefault="qualified">
+
+    <xs:import schemaLocation="types.xsd" namespace="http://baxter-it.com/config/types" />
+    <xs:import schemaLocation="component.xsd" namespace="http://baxter-it.com/config/component" />
+    <xs:import schemaLocation="config.xsd" namespace="http://baxter-it.com/config" />
+
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="currencyPair" type="tns:TCurrencyPair" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TCurrencyPair">
+        <xs:complexContent>
+            <xs:extension base="c:TWithComponents">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="port">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:positiveInteger">
+                    <xs:attribute name="id" type="xs:NCName" use="required" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

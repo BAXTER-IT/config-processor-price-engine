@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Price Engine Configuration Source Layout</title>
+        <author email="ykryshchuk@n-ix.com.ua">Yuriy Kryshchuk</author>
+    </properties>
+
+    <body>
+        <section name="Overview">
+            <p>This document describes the format and layout of source XMLs for Price Engine configuration processors.
+                This includes the naming of source files, conventions for content, transformation stylesheets
+                description.</p>
+            <p>All defined configuration sources are described in separate sections of this document. Please also refer
+                to the <a href="components.html">Price Engine Components Configuration</a> document that describes all
+                kinds of configurations used for Price Engine components.</p>
+            <p>The root of configuration repository for Price Engine product is <code>$REPO_HOME/com/baxter/pe</code>
+                directory on Configuration Server's file system. Here is a list of source files supported by PE
+                configuration processors:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>XML NS</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>log.xml</td>
+                        <td>http://baxter-it.com/config/log</td>
+                        <td>Generic logging configuration source.</td>
+                    </tr>
+                    <tr>
+                        <td>jms.xml</td>
+                        <td>http://baxter-it.com/config/pe/jms</td>
+                        <td>Price Engine JMS configuration source.</td>
+                    </tr>
+                    <tr>
+                        <td>clients.xml</td>
+                        <td>http://baxter-it.com/config/pe/clients</td>
+                        <td>Price Engine Client Applications configuration source.</td>
+                    </tr>
+                    <tr>
+                        <td>currencies.xml</td>
+                        <td>http://baxter-it.com/config/pe/cp</td>
+                        <td>Price Engine Currencies configuration source.</td>
+                    </tr>
+                    <tr>
+                        <td>udp-price.xml</td>
+                        <td>http://baxter-it.com/config/pe/udpprice</td>
+                        <td>Price Engine configuration source for UDP Prices.</td>
+                    </tr>
+                    <tr>
+                        <td>broadcast.xml</td>
+                        <td>http://baxter-it.com/config/pe/broadcast</td>
+                        <td>Price Engine Broadcast configuration source.</td>
+                    </tr>
+                    <tr>
+                        <td>jdbc.xml</td>
+                        <td>http://baxter-it.com/config/pe/db</td>
+                        <td>Price Engine Database Connections configuration source.</td>
+                    </tr>
+                    <tr>
+                        <td>snmp.xml</td>
+                        <td>http://baxter-it.com/config/pe/snmp</td>
+                        <td>Price Engine SNMP configuration source for AdminTool.</td>
+                    </tr>
+                    <tr>
+                        <td>properteis.xml</td>
+                        <td>http://baxter-it.com/config/pe/properties</td>
+                        <td>Generic Price Engine properties configuration source.</td>
+                    </tr>
+                    <tr>
+                        <td>client-messaging.xml</td>
+                        <td>http://baxter-it.com/config/pe/cm</td>
+                        <td>Price Engine Client Messaging configuration source.</td>
+                    </tr>
+                    <tr>
+                        <td>qfix.xml</td>
+                        <td>http://baxter-it.com/config/pe/qfix</td>
+                        <td>QuickFix configuration source.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>In addition to these configuration sources there can be configuration variant files. The variant
+                conventions are described for each configuration source separately in sections below.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>XML NS</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>http://baxter-it.com/config/component</td>
+                        <td>Generic Component's definitions</td>
+                    </tr>
+                    <tr>
+                        <td>http://baxter-it.com/config</td>
+                        <td>Generic Configuration's definitions</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </section>
+
+        <section name="Logging Source">
+            <code>$REPO_HOME/com/baxter/pe/log.xml</code>
+
+            <p>Logging source defines the configuration for logging frameworks such as Log4J or Logback. The same source
+                is used to generate all types of final configuration.</p>
+
+            <p>Each Price Engine component's log is configured in the same file.</p>
+
+            <ul>
+                <li>log.xml</li>
+            </ul>
+
+            <subsection name="Schema"> </subsection>
+
+            <subsection name="Variants">
+
+                <p>The logging configuration can be overriden by source variants. The overriding will be then applied on
+                    the phase of generating the configurationm file. Source variants for logging configuration should
+                    follow the filename convention: <code>$REPO_HOME/com/baxter/pe/log(variantName).xml</code>, where
+                        <code>variant</code> is a variant part of request URL. Here are sample filenames for
+                    variants:</p>
+
+                <ul>
+                    <li>log(Local).xml</li>
+                    <li>log(Sydney).xml</li>
+                    <li>log(experimental).xml</li>
+                </ul>
+
+                <p>Use standard variants overriding rules to define configuration variants. TODO link to standard
+                    rules</p>
+
+            </subsection>
+
+            <subsection name="Usage"> </subsection>
+
+        </section>
+
+        <section name="JMS Configuration Source">
+            <code>$REPO_HOME/com/baxter/pe/jms.xml</code>
+
+            <p>This configuration source defines all information related to JMS configuration for Price Engine. This
+                includes configuration of JMS Nodes Instances, authorization and authentication, configuration of
+                channels (topics and queues). List of the channels used by Price Engine components can be found in <a
+                    href="jms-channels.html">this document</a>.</p>
+
+            <subsection name="Schema">
+                <p>The configuration source groups all settings into three parts: nodes, channels and general settings.
+                    Please also refer to <a href="xsd/config-pe-jms.xsd">XML Schema</a> for more details.</p>
+
+                <source><![CDATA[
+<configuration xmlns="http://baxter-it.com/config/pe/jms">
+    <node id="node1" host="localhost" port="4001" router="router1" />
+    <node id="node2" host="localhost" port="4002" router="router2" />
+    <authentication id="auth1" username="testUser1" password="test1" />
+    <authentication id="auth2" username="testUser2" password="test2" />
+    <queue name="Trade2DB" id="trade2db" node="node1" authentication="auth1">
+        <component id="price-engine-broadcast" write="true" />
+        <component id="price-engine-dbserver" read="true" />
+    </queue>
+    <queue name="TWC2Server" id="twc2tws" node="node2" authentication="auth1">
+        <component id="price-engine-trackwheel" write="true" />
+        <component id="price-engine-twserver" read="true" />
+    </queue>
+    <topic name="TWS2Client" id="tws2twc" node="node2">
+        <component id="price-engine-trackwheel" read="true" />
+        <component id="price-engine-twserver" write="true" />
+    </topic>
+</configuration>
+                ]]></source>
+
+                <h5>JMS Nodes</h5>
+
+                <p>Every node describes a physical JMS instance. This includes the host and port where JMS is running
+                    and router.</p>
+
+                <source><![CDATA[
+<node id="node2" host="localhost" port="4002" router="router2">
+</node>
+                ]]></source>
+
+                <h5>Authentication</h5>
+
+                <p>Defines authentication method.</p>
+
+                <source><![CDATA[
+<authentication id="auth1" username="testUser1" password="test1" />
+]]></source>
+
+                <h5>Channels</h5>
+
+                <p>Channels configuration includes the setup for JMS Topics and Queues. Each channel can be described
+                    with channel name and id (used by PE code at runtime). The channel is assigned to a particular JMS
+                    node (should be configured there). The list of components which use this channel is provided via
+                    nested elements.</p>
+
+                <source><![CDATA[
+<queue name="TWC2Server" id="twc2tws" node="node2" authentication="auth2">
+    <component id="price-engine-trackwheel" write="true" />
+    <component id="price-engine-twserver" read="true" />
+</queue>
+<topic name="TWS2Client" id="tws2twc" node="node2" authentication="auth2">
+    <component id="price-engine-trackwheel" read="true" />
+    <component id="price-engine-twserver" write="true" />
+</topic>
+                ]]></source>
+
+            </subsection>
+
+            <subsection name="Variants">
+                <p>Each configuration element from the source file can be overriden or extended by variant files. The
+                    name of variant file should follow this convention:
+                        <code>$REPO_HOME/com/baxter/pe/jms(variant).xml</code>, where <code>variant</code> is a variant
+                    part of request URL.</p>
+
+                <ul>
+                    <li>jms(TestEnv).xml</li>
+                    <li>jms(SwiftMQ-7).xml</li>
+                </ul>
+
+                <p>Use standard variants overriding rules to define configuration variants. TODO link to standard
+                    rules</p>
+
+            </subsection>
+
+            <subsection name="Usage"> </subsection>
+
+        </section>
+
+        <section name="Generic Properties Source">
+            <code>$REPO_HOME/com/baxter/pe/properties.xml</code>
+
+            <p>This configuration source defines all information related to the components except jms settings. This
+                includes configuration of Property Instances and the component list where they are used.</p>
+
+            <subsection name="Schema">
+                <p>The configuration source consist of property settings. Please also refer to <a
+                        href="xsd/config-pe-properties.xsd">XML Schema</a> for more details.</p>
+
+                <source><![CDATA[
+<properties xmlns="http://baxter-it.com/config/pe/properties"
+    xmlns:c="http://baxter-it.com/config/component">
+
+    <property id="runDIServer" value="${pe.devel.config.di}">
+        <c:component id="price-engine-blotter"/>
+        <c:component id="price-engine-blotterserver"/>
+    </property>
+
+    <property id="useDIPanel" value="${pe.devel.config.useDIPanel}">
+        <c:component id="price-engine-blotter"/>
+    </property>
+
+</properties>
+                ]]></source>
+
+                <h5>Property Nodes</h5>
+
+                <p>Every node describes a property instance. This includes the name on which the component try to
+                    serarch for the value. And the value itself, and the list of components which use this property</p>
+
+                <source><![CDATA[
+    <property id="runDIServer" value="${pe.devel.config.dir}">
+        <c:component id="price-engine-blotter"/>
+        <c:component id="price-engine-blotterserver"/>
+    </property>
+                ]]></source>
+
+            </subsection>
+
+            <subsection name="Variants">
+                <p>Each configuration element from the source file can be overriden or extended by variant files. The
+                    name of variant file should follow this convention:
+                        <code>$REPO_HOME/com/baxter/pe/properties(variant).xml</code>, where <code>variant</code> is a
+                    variant part of request URL.</p>
+
+                <ul>
+                    <li>properties(TestEnv).xml</li>
+                    <li>properties(ProductionEnv).xml</li>
+                </ul>
+
+                <p>Use standard variants overriding rules to define configuration variants. TODO link to standard
+                    rules</p>
+
+            </subsection>
+
+            <subsection name="Usage"> </subsection>
+
+        </section>
+
+        <section name="Currency and port specification">
+            <p> Forward controllers, Trackwheel servers, and validtaors are started according the list that is provided
+                by currencies.xml. This file specifies which currencies or currency paris are required to be handled by
+                the conmponent, and the connecton port of it. </p>
+
+            <p>The structure of the file:</p>
+            <p>The root <code>&lt;configuration&gt;</code> tag can contain 2 different tags
+                    <code>&lt;currencyPair&gt;</code> and <code>&lt;currency&gt;</code></p>
+
+            <p><code>&lt;configuration&gt;</code> tag can be used to specify the currency pairs for any components that
+                requires it. The currency pair is identified by the attribute id of the tag that is a 2 letter code
+                value. Under this tag there are the <code>&lt;port&gt;</code> tags that identify the component that can
+                use the value by the attribute id and contains the port number</p>
+
+            <source><![CDATA[
+<configuration xmlns="http://baxter-it.com/config/pe/cp">
+    <currencyPair id="AU">
+        <port id="price-engine-fwdcontroller">6200</port>
+        <port id="price-engine-validator">6740</port>
+        <port id="price-engine-twserver">6002</port>
+    </currencyPair>
+</configuration>
+                ]]></source>
+
+            <p>The <code>&lt;currency&gt;</code> tag is used for the forward controller to set the port for a curreny in
+                case of interrest rate usage.</p>
+            <p>The structure of <code>&lt;currency&gt;</code> is the same as the currencyPair's</p>
+
+            <source><![CDATA[
+<configuration xmlns="http://baxter-it.com/config/pe/cp">
+    <currency id="USD">
+        <port id="price-engine-fwdcontroller">6090</port>
+    </currency>
+</configuration>
+]]></source>
+
+            <p>The value of the component can be required in this case by using the next requests.</p>
+            <p> {host:port}/config-server/rest/com.baxter.pe/price-engine-twserver/currencypairs</p>
+            <p>{host:port}/config-server/rest/com.baxter.pe/price-engine-fwdcontroller/currencies</p>
+
+        </section>
+    </body>
+
+</document>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log">
+
+    <rolling-file-appender name="ASYNC_EBSXMLCommunicator40" file="EBSXMLCommunicator40.log" maxSize="100MB" backupIndex="5">
+        <layout>[%d{ISO8601}] - %m%n</layout>
+    </rolling-file-appender>
+
+    <logger name="com.baxter.ebs.EBSXMLCommunicator40" level="TRACE">
+		<appender-ref ref="ASYNC_EBSXMLCommunicator40"/>
+    </logger>
+    
+</configuration>

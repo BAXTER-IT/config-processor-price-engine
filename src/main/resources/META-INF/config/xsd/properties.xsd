@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://baxter-it.com/price-engine/conf/generic-properties"
+    xmlns:tns="http://baxter-it.com/price-engine/conf/generic-properties" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config"
+    elementFormDefault="qualified">
+
+    <xs:import schemaLocation="component.xsd" namespace="http://baxter-it.com/config/component" />
+    <xs:import schemaLocation="config.xsd" namespace="http://baxter-it.com/config" />
+
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="property" type="tns:TProperty" />
+                <xs:element ref="conf:reference" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TProperty">
+        <xs:complexContent>
+            <xs:extension base="c:TWithComponents">
+                <xs:attribute name="value" type="xs:string" use="optional" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,9 @@
+.project
+.classpath
+.settings
+target
+src/main/resources/META-INF/config/xsd/types.xsd
+src/main/resources/META-INF/config/xsd/component.xsd
+src/main/resources/META-INF/config/xsd/config.xsd
+src/main/resources/META-INF/config/xsd/jvm.xsd
+src/main/resources/META-INF/config/xsd/log.xsd

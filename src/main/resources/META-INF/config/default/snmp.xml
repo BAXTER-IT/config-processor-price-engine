@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/snmp" xmlns:c="http://baxter-it.com/config/component">
+    
+    <snmp id="admintool" storageWarningLevel="8" interval="5000">
+        <c:component id="price-engine-admintool" />
+        <components>
+            <ip>192.168.9.77</ip>
+            <ip>192.168.9.6</ip>
+            <ip>192.168.9.72</ip>
+            <ip>192.168.9.17</ip>
+            <ip>192.168.9.74</ip>
+        </components>
+        <hardwares>
+            <ip>192.168.9.77</ip>
+            <ip>192.168.9.6</ip>
+            <ip>192.168.9.72</ip>
+            <ip>192.168.9.17</ip>
+        </hardwares>
+    </snmp>
+    
+</configuration>

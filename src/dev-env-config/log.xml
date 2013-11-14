@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log"
+    xmlns:c="http://baxter-it.com/config/component">
+
+    <logger id="ROOT1">
+        <c:component id="demo-vendor"/>
+        <c:component id="di-upstream"/>
+    </logger>
+
+    <logger id="demo-vendor-file" name="com.baxter" level="TRACE" additivity="false">
+        <appender-ref ref="FILE_DemoVendor"/>
+        <c:component id="demo-vendor"/>
+    </logger>
+    
+    <logger id="di-upstream-file" name="com.baxter" level="TRACE" additivity="false">
+        <appender-ref ref="FILE_DiUpstreamTester"/>
+        <c:component id="di-upstream"/>
+    </logger>
+	
+    <logger id="handoff-tester-file" name="com.baxter" level="TRACE" additivity="false">
+        <appender-ref ref="FILE_HandOffTester"/>
+        <c:component id="handoff-tester"/>
+    </logger>
+	
+    <console-appender id="CONSOLE1">
+        <c:component id="demo-vendor"/>
+        <c:component id="di-upstream"/>
+        <c:component id="handoff-tester"/>
+    </console-appender>
+
+    <rolling-file-appender id="FILE_DemoVendor" name="FILE_DemoVendor" file="DemoVendor.log" maxSize="5MB" backupIndex="10">
+        <layout>DemoVendor[%d{ISO8601}][%p] - %m%n</layout>
+        <c:component id="demo-vendor"/>
+    </rolling-file-appender>
+	
+    <rolling-file-appender id="FILE_DiUpstreamTester" name="FILE_DiUpstreamTester" file="DiUpstreamTester.log" maxSize="5MB" backupIndex="10">
+        <layout>DiUpstreamTester[%d{ISO8601}][%p] - %m%n</layout>
+        <c:component id="di-upstream"/>
+    </rolling-file-appender>
+    
+    <rolling-file-appender id="FILE_HandOffTester" name="FILE_HandOffTester" file="HandOffSystemTester.log" maxSize="5MB" backupIndex="10">
+        <layout>HandOffTester[%d{ISO8601}][%p] - %m%n</layout>
+        <c:component id="handoff-tester"/>
+    </rolling-file-appender>
+	
+</configuration>

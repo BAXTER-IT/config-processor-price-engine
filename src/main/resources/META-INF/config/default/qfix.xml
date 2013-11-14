@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/qfix" xmlns:conf="http://baxter-it.com/config">
+
+    <defaults id="thisIsSomethingCommon">
+        <default id="ConnectionType">initiator</default>
+        <default id="ReconnectInterval">30</default>
+        <default id="ScreenLogEvents">false</default>
+        <default id="ScreenLogShowIncoming">false</default>
+        <default id="ScreenLogShowOutgoing">false</default>
+        <default id="PersistMessages">false</default>
+        <default id="RefreshMessageStoreAtLogon">true</default>
+        <default id="MillisecondsInTimeStamp">true</default>
+        <default id="FileIncludeTimeStampForMessages">true</default>
+        <default id="FileStorePath">./logs</default>
+        <default id="FileLogPath">./logs</default>
+        <default id="ScreenLogEvents">true</default>
+    </defaults>
+
+    <defaults id="Bloomberg">
+        <default id="ConnectionType">initiator</default>
+        <default id="ReconnectInterval">60</default>
+		<default id="SenderCompID">BAXTER_TEST</default>
+		<default id="MillisecondsInTimeStamp">Y</default>
+		<default id="RefreshMessageStoreAtLogon">Y</default>
+		<default id="PersistMessages">Y</default>
+		<default id="FileIncludeMilliseconds">Y</default>
+		<default id="FileIncludeTimeStampForMessages">Y</default>
+        <default id="FileStorePath">./logs</default>
+        <default id="FileLogPath">./logs</default>
+    </defaults>
+
+    <defaults id="fix44">
+        <default id="SenderCompID">BAXTER_RFQ_TEST</default>
+	<default id="ConnectionType">initiator</default>
+	<default id="ReconnectInterval">30</default>
+ <default id="ScreenLogEvents">N</default>
+ <default id="ScreenLogShowIncoming">N</default>
+ <default id="ScreenLogShowOutgoing">N</default>
+ <default id="PersistMessages">N</default>
+ <default id="RefreshMessageStoreAtLogon">Y</default>
+ <default id="MillisecondsInTimeStamp">Y</default>
+ <default id="FileIncludeTimeStampForMessages">Y</default>
+ <default id="FileStorePath">d:\\Logs</default>
+ <default id="FileLogPath">d:\\LOgs</default>
+ <default id="ScreenLogEvents">Y</default>
+
+
+
+    </defaults>
+
+    <defaults id="integralOrder">
+        <default id="SenderCompID">demo.order</default>
+    </defaults>
+
+    <defaults id="integralQuote">
+        <default id="SenderCompID">demo.price</default>
+    </defaults>
+
+    <time id="typical" start="00:00:00" end="23:59:00"/>
+
+	<time id="sun_fri_0000_2359" start="00:00:00" end="23:59:00" startDay="SUNDAY" endDay="FRIDAY" />
+
+    <connection id="conn1" host="193.29.38.80" port="7029"/>
+    <connection id="fix44conn2" host="193.29.38.80" port="8630"/>
+    <connection id="conn2" host="70.42.18.27" port="5869" resetOnLogon="true">
+        <ssl id="id_maybe_omitted_if_not_overriden_in_variant" password="integral">
+            <conf:reference id="SocketKeyStore" type="asis">
+			    <conf:parameter name="file">keys/integral.jks</conf:parameter>
+			</conf:reference>
+        </ssl>
+    </connection>
+
+    <connection id="connBloomberg" host="205.216.112.15" port="28537" resetOnLogon="true">
+	</connection>
+	
+    <session id="Bloomberg" beginString="FIX.4.2" target="BLOOMBERG_FX" time="sun_fri_0000_2359"
+        heartbeatInterval="30" connection="connBloomberg">
+        <conf:reference id="DataDictionary" type="asis">
+		  <conf:parameter name="file">qfixDataDictionary/QFixBloomberg_FIX42.xml</conf:parameter>
+		</conf:reference>
+    </session>
+
+    <session id="fix44" beginString="FIX.4.4" target="360T_RFQ_TEST" time="typical"
+        heartbeatInterval="30" connection="conn1">
+        <conf:reference id="DataDictionary" type="asis">
+		  <conf:parameter name="file">qfixDataDictionary/FIX44.xml</conf:parameter>
+		</conf:reference>
+    </session>
+
+    <session id="integralOrder" beginString="FIX.4.3" target="order.SANT" time="typical"
+        heartbeatInterval="30" connection="conn2">
+        <conf:reference id="DataDictionary" type="asis">
+		  <conf:parameter name="file">qfixDataDictionary/IntegralQuoteFIX43.xml</conf:parameter>
+		</conf:reference>
+    </session>
+
+    <session id="integralQuote" beginString="FIX.4.3" target="price.SANT" time="typical"
+        heartbeatInterval="30" connection="conn2">
+        <conf:reference id="DataDictionary" type="asis">
+		  <conf:parameter name="file">qfixDataDictionary/IntegralQuoteFIX43.xml</conf:parameter>
+		</conf:reference>
+    </session>
+
+</configuration>

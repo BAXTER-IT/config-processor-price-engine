@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log">
+
+    <console-appender name="CONSOLE">
+        <layout>DiUpstreamTester %c{1} [%d{ISO8601}] %m%n</layout>
+    </console-appender>
+   
+    <rolling-file-appender name="FILE_DiUpstreamTester" file="DiUpstreamTester.log" maxSize="5MB" backupIndex="10">
+        <layout>DiUpstreamTester[%d{ISO8601}][%p] - %m%n</layout>
+    </rolling-file-appender>
+
+    <logger name="com.baxter" additivity="false" level="TRACE">
+        <appender-ref ref="FILE_DiUpstreamTester" />
+    </logger>
+
+    <logger name="com.baxter" level="TRACE">
+	<appender-ref ref="CONSOLE" />
+    </logger>
+    
+</configuration>

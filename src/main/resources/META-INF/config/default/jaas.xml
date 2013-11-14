@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/jaas"
+    xmlns:c="http://baxter-it.com/config/component">
+    
+    <!--authenticator id="ldapConnection" class="com.sun.security.auth.module.LdapLoginModule" controlFlag="REQUIRED">
+        <c:component id="price-engine-dbserver" />
+        <ace id="internal" userProvider="ldap://192.168.9.221:389/dc=users,dc=internal,dc=priceengine,dc=baxtersol,dc=bit" userFileter="uid={USERNAME}" useSSL="false" debug="true"/>
+        <ace id="external" userProvider="ldap://192.168.9.221:389/dc=users,dc=external,dc=priceengine,dc=baxtersol,dc=bit" userFileter="uid={USERNAME}" useSSL="false" debug="true"/>
+    </authenticator-->
+
+</configuration>

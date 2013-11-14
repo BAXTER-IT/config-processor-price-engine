@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log">
+
+    <console-appender name="CONSOLE">
+        <layout>HolidayConverter [%C]%c [%d{ISO8601}] %m%n</layout>
+    </console-appender>
+   
+    <rolling-file-appender name="ASYNC_Tool" file="HolidayConverter.log" maxSize="5MB" backupIndex="10">
+        <layout>%c[%d{ISO8601}][%p] - %m%n</layout>
+    </rolling-file-appender>
+
+    <logger name="com.baxter" additivity="false" level="DEBUG">
+        <appender-ref ref="ASYNC_Tool" />
+    </logger>
+    
+</configuration>

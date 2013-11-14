@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/jvm"
+    xmlns:c="http://baxter-it.com/config/component"> 
+
+	<logging id="default">
+		<c:component id="credit-check"/>
+        <c:component id="demo-vendor"/>
+	    <c:component id="di-upstream"/>
+	    <c:component id="handoff-tester"/>
+	</logging>
+
+    <heap id="default" initial="256M" maximum="1G">
+        <c:component id="price-engine-admintool"/>
+    </heap>
+    
+    <debug id="dt_socket_localhost_wait" transport="dt_socket" listenHost="localhost" suspend="true">
+    </debug>
+
+    <debug id="dt_socket_localhost_nowait" transport="dt_socket" listenHost="localhost" suspend="false">
+        <c:component id="price-engine-servlet">
+            <port id="debug">8773</port> 
+        </c:component>
+        <c:component id="price-engine-blotterserver">
+            <port id="debug">8782</port> 
+        </c:component>
+        <c:component id="price-engine-dbserver">
+            <port id="debug">8780</port> 
+        </c:component>
+        <c:component id="price-engine-broadcast">
+            <port id="debug">8781</port> 
+        </c:component>
+        <c:component id="price-engine-admintool">
+            <port id="debug">8771</port> 
+        </c:component>
+        <c:component id="price-engine-blotter">
+            <port id="debug">8772</port> 
+        </c:component>
+    </debug>
+    
+</configuration>

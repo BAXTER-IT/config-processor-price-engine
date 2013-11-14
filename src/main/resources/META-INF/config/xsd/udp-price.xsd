@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://baxter-it.com/price-engine/conf/udp-price"
+    xmlns:tns="http://baxter-it.com/price-engine/conf/udp-price" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config" xmlns:t="http://baxter-it.com/config/types" elementFormDefault="qualified">
+
+    <xs:import schemaLocation="types.xsd" namespace="http://baxter-it.com/config/types" />
+    <xs:import schemaLocation="component.xsd" namespace="http://baxter-it.com/config/component" />
+    <xs:import schemaLocation="config.xsd" namespace="http://baxter-it.com/config" />
+
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="connection" type="tns:TConnection" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TConnection">
+        <xs:complexContent>
+            <xs:extension base="c:TWithComponents">
+                <xs:sequence>
+                    <xs:element name="server">
+                        <xs:complexType>
+                            <xs:attribute name="id" type="xs:NCName" use="optional" />
+                            <xs:attribute name="host" type="xs:string" use="optional" />
+                            <xs:attribute name="port" type="xs:positiveInteger" use="optional" />
+                            <xs:attribute name="broadcastId" type="xs:string" use="optional" />
+                            <xs:attribute name="broadcastMode" use="optional">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="channel" />
+                                        <xs:enumeration value="price" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+                <xs:attribute name="port" use="optional">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="\d+(-\d+)?" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

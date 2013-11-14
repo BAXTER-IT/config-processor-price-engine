@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/client-messaging" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config">
+
+    <clientMessaging id="FIX44">
+        <property id="SequenceIDStorageFileName">./conf/fixSequences.txt</property>
+        <conf:reference id="CLIENTMESSAGING_QUICKFIX_INIFILE" type="qfixini">
+            <conf:parameter name="session">fix44</conf:parameter>
+            <conf:parameter name="defaults">fix44</conf:parameter>
+            <conf:parameter name="defaults">thisIsSomethingCommon</conf:parameter>
+        </conf:reference>
+    </clientMessaging>
+
+    <clientMessaging id="360T">
+        <property id="SequenceIDStorageFileName">./conf/fixSequences.txt</property>
+        <conf:reference id="CLIENTMESSAGING_QUICKFIX_INIFILE" type="qfixini">
+            <conf:parameter name="session">fix44</conf:parameter>
+            <conf:parameter name="defaults">fix44</conf:parameter>
+            <conf:parameter name="defaults">thisIsSomethingCommon</conf:parameter>
+        </conf:reference>
+    </clientMessaging>
+	
+	<clientMessaging id="Bloomberg">
+        <conf:reference id="CLIENTMESSAGING_QUICKFIX_INIFILE" type="qfixini">
+            <conf:parameter name="session">Bloomberg</conf:parameter>
+            <conf:parameter name="defaults">Bloomberg</conf:parameter>
+        </conf:reference>
+		<property id="OVERALL_LIFETIME_DELAY">10000</property>
+		<property id="SequenceIDStorageFileName">./conf/QFixBloombergSequences.txt</property>
+	</clientMessaging>
+
+    <clientMessaging id="Integral">
+        <conf:reference id="QUOTESESSION_QUICKFIX_INIFILE" type="qfixini">
+            <conf:parameter name="session">integralQuote</conf:parameter>
+            <conf:parameter name="defaults">integralQuote</conf:parameter>
+            <conf:parameter name="defaults">thisIsSomethingCommon</conf:parameter>
+        </conf:reference>
+        <conf:reference id="ORDERSESSION_QUICKFIX_INIFILE" type="qfixini">
+            <conf:parameter name="session">integralOrder</conf:parameter>
+            <conf:parameter name="defaults">integralOrder</conf:parameter>
+            <conf:parameter name="defaults">thisIsSomethingCommon</conf:parameter>
+        </conf:reference>
+    </clientMessaging>
+	
+	<clientMessaging id="FXall">
+		<property id="USERNAME">auto@WESTPAC5</property>
+		<property id="PASSWD">fxall123</property>
+		<property id="HOST">ssl://64.209.231.116:443</property>
+		<property id="java.protocol.handler.pkgs">progress.message.net</property>
+        <conf:reference id="SSL_CA_CERTIFICATES_DIR" type="dir">
+            <conf:parameter name="dir">keys/ca</conf:parameter>
+        </conf:reference>
+		<property id="USE_PICKUP">FALSE</property>
+		<!-- <property id="CONNECTION_TYPE">RFQ</property> -->
+		<property id="ENABLE_NDF">TRUE</property>
+ <property id="ENABLE_BLOCK_TRADE">TRUE</property>
+ <property id="ENABLE_MULTI_ALLOCATION_TRADE">TRUE</property>
+ <property id="ENABLE_SAME_ACCOUNT_SWAP_ALLOCATION">TRUE</property>
+
+	</clientMessaging>
+
+    <clientMessaging id="currenexAP">
+        <property id="USERID">baxterrfqmkr</property>
+        <property id="ALIAS">baxterrfqmkr</property>
+        <property id="PASSWORD">bax1234</property>
+        <conf:reference id="KEYFILE" type="asis">
+            <conf:parameter name="file">keys/baxterrfqmkr.jks</conf:parameter>
+        </conf:reference>
+        <conf:reference id="PROPERTIES_CONTEXT" type="asis">
+            <conf:parameter name="file">fxintegrateAP.properties</conf:parameter>
+        </conf:reference>
+    </clientMessaging>
+
+    <clientMessaging id="Currenex">
+        <property id="ALIAS_NAME">baxterbankesp</property>
+        <property id="ALIAS_PASSWORD">test1234</property>
+		<property id="USERID">baxterbankesp</property>
+		<property id="BANKNAME">baxterbankesp</property>
+		<property id="ESPTIMETOLIVE">30</property>
+        <conf:reference id="KEYSTORE_FILENAME" type="asis">
+            <conf:parameter name="file">keys/baxterbankesp.jks</conf:parameter>
+        </conf:reference>
+		<!-- The content of fxintegrateESP.properties -->
+		<property id="fxintegrate.host">integration-ts.currenex.com</property>
+		<property id="fxintegrate.port">443</property>
+		<property id="fxintegrate.protocol">blue</property>
+		<property id="fxintegrate.usessl">true</property>
+		<!--
+		#fxintegrate.proxyhost=
+		#fxintegrate.proxyport=
+		#fxintegrate.proxyusername=
+		#fxintegrate.proxypassword=
+		#fxintegrate.methodtimeout=
+		-->
+		<property id="fxintegrate.logging.priority">DEBUG</property>
+		<property id="fxintegrate.logging.file">${pe.logs.dir}/fxintegrate.log</property>
+		<property id="fxintegrate.logging.maxfilesize">250KB</property>
+		<property id="fxintegrate.logging.maxfilecount">10</property>
+		<property id="fxintegrate.logging.output">BOTH</property>
+		<property id="fxintegrate.logging.pattern">%r %d [%t] %p %c %m%n</property>
+		<conf:reference id="fxintegrate.cert.root.ca.file" type="asis">
+            <conf:parameter name="file">keys/equifax-root-ca.der</conf:parameter>
+        </conf:reference>
+		<property id="fxintegrate.cert.host.verify">false</property>
+	</clientMessaging>
+	
+	<clientMessaging id="Dashboard">
+	<!-- toPlugin Queue -->
+<property id="JMSHOST" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node]/@host" />
+<property id="JMSPORT" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node]/@port" />
+<property id="JMSHOST2" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node2]/@host" />
+<property id="JMSPORT2" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node2]/@port" />
+<property id="JMSQROUTER" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node]/@router" />
+<property id="JMSQNAME" reference="/jms:configuration/jms:queue[@id='toPlugin']/@name" />
+<property id="JMSACKMODE" reference="/jms:configuration/jms:queue[@id='toPlugin']/@ackMode" />
+<property id="JMSUSERNAME" reference="/jms:configuration/jms:authentication[@id=../jms:queue[@id='toPlugin']/@authentication]/@username" />
+<property id="JMSPASSWORD" reference="/jms:configuration/jms:authentication[@id=../jms:queue[@id='toPlugin']/@authentication]/@password" />
+<!-- JMS Stream topic -->
+<property id="JMSSTREAMHOST" reference="/jms:configuration/jms:node[@id=../jms:topic[@id='JmsStreamTopic']/@node]/@host" />
+<property id="JMSSTREAMPORT" reference="/jms:configuration/jms:node[@id=../jms:topic[@id='JmsStreamTopic']/@node]/@port" />
+<property id="JMSSTREAMHOST2" reference="/jms:configuration/jms:node[@id=../jms:topic[@id='JmsStreamTopic']/@node2]/@host" />
+<property id="JMSSTREAMPORT2" reference="/jms:configuration/jms:node[@id=../jms:topic[@id='JmsStreamTopic']/@node2]/@port" />
+<property id="JMSSTREAMTNAME" reference="/jms:configuration/jms:topic[@id='JmsStreamTopic']/@name" />
+<property id="JMSSTREAMACKMODE" reference="/jms:configuration/jms:topic[@id='JmsStreamTopic']/@ackMode" />
+<property id="JMSSTREAMUSERNAME" reference="/jms:configuration/jms:authentication[@id=../jms:topic[@id='JmsStreamTopic']/@authentication]/@username" />
+<property id="JMSSTREAMPASSWORD" reference="/jms:configuration/jms:authentication[@id=../jms:topic[@id='JmsStreamTopic']/@authentication]/@password" />
+<!-- Global auth -->
+<property id="GlobalJMSUserName" reference="/jms:configuration/jms:authentication[@id='global']/@username" />
+<property id="GlobalJMSPassword" reference="/jms:configuration/jms:authentication[@id='global']/@password" />
+	</clientMessaging>
+
+	<clientMessaging id="Mareeba">
+	<!-- toPlugin Queue -->
+	<jmsQueue id="jms" channel="toPlugin" prefix="JMS" />
+<!--
+<property id="JMSHOST" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node]/@host" />
+<property id="JMSPORT" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node]/@port" />
+<property id="JMSHOST2" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node2]/@host" />
+<property id="JMSPORT2" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node2]/@port" />
+<property id="JMSQROUTER" reference="/jms:configuration/jms:node[@id=../jms:queue[@id='toPlugin']/@node]/@router" />
+<property id="JMSQNAME" reference="/jms:configuration/jms:queue[@id='toPlugin']/@name" />
+<property id="JMSACKMODE" reference="/jms:configuration/jms:queue[@id='toPlugin']/@ackMode" />
+<property id="JMSUSERNAME" reference="/jms:configuration/jms:authentication[@id=../jms:queue[@id='toPlugin']/@authentication]/@username" />
+<property id="JMSPASSWORD" reference="/jms:configuration/jms:authentication[@id=../jms:queue[@id='toPlugin']/@authentication]/@password" />
+    -->
+<!-- JMS Stream topic -->
+	<jmsTopic id="jmsStream" channel="JmsStreamTopic" prefix="JMSSTREAM" />
+<!--
+<property id="JMSSTREAMHOST" reference="/jms:configuration/jms:node[@id=../jms:topic[@id='JmsStreamTopic']/@node]/@host" />
+<property id="JMSSTREAMPORT" reference="/jms:configuration/jms:node[@id=../jms:topic[@id='JmsStreamTopic']/@node]/@port" />
+<property id="JMSSTREAMHOST2" reference="/jms:configuration/jms:node[@id=../jms:topic[@id='JmsStreamTopic']/@node2]/@host" />
+<property id="JMSSTREAMPORT2" reference="/jms:configuration/jms:node[@id=../jms:topic[@id='JmsStreamTopic']/@node2]/@port" />
+<property id="JMSSTREAMTNAME" reference="/jms:configuration/jms:topic[@id='JmsStreamTopic']/@name" />
+<property id="JMSSTREAMACKMODE" reference="/jms:configuration/jms:topic[@id='JmsStreamTopic']/@ackMode" />
+<property id="JMSSTREAMUSERNAME" reference="/jms:configuration/jms:authentication[@id=../jms:topic[@id='JmsStreamTopic']/@authentication]/@username" />
+<property id="JMSSTREAMPASSWORD" reference="/jms:configuration/jms:authentication[@id=../jms:topic[@id='JmsStreamTopic']/@authentication]/@password" />
+   -->
+<!-- Global auth -->
+<property id="GlobalJMSUserName" reference="/jms:configuration/jms:authentication[@id='global']/@username" />
+<property id="GlobalJMSPassword" reference="/jms:configuration/jms:authentication[@id='global']/@password" />
+	</clientMessaging>
+	
+	<clientMessaging id="CD">
+		<property id="CLIENTHOST">10.100.100.197</property>
+		<property id="CLIENTPORT">4001</property>
+		<property id="CLIENTHOST2"></property>
+		<property id="CLIENTPORT2">0</property>
+		<property id="CLIENTQFULLNAME">PE2CD@router1</property>
+		<property id="CONNECTIONFACTORY">QueueConnectionFactory</property>
+		<property id="TRADEQUEUE">CD2PE@router1</property>
+		<property id="PUBLISHPRICESONSOCKET">false</property>
+		<property id="PUBLISHPRICESONSOCKETPORT">0</property>
+		<property id="MARKDOWNFACTOR">0</property>
+	</clientMessaging>
+
+</configuration>

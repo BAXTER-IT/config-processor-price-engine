@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log">
+
+    <console-appender name="CONSOLE">
+        <layout>setupDBP2 %c{1} [%d{ISO8601}] %m%n</layout>
+    </console-appender>
+   
+    <rolling-file-appender name="FILE_SetupDB2" file="setupDBP2.log" maxSize="5MB" backupIndex="10">
+        <layout>SetupDBP2[%p][%d{ISO8601}][%p] - %m%n</layout>
+    </rolling-file-appender>
+
+    <logger name="com.baxter.genius.setup" additivity="false" level="TRACE">
+	<appender-ref ref="FILE_SetupDB2" />
+	<appender-ref ref="CONSOLE" />
+    </logger>
+
+    <logger name="com.baxter" level="TRACE">
+	<appender-ref ref="CONSOLE" />
+    </logger>
+
+</configuration>

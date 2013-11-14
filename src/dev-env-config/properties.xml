@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/generic-properties"
+    xmlns:c="http://baxter-it.com/config/component" xmlns:conf="http://baxter-it.com/config">
+    <property id="frequency.filled" value="10">
+        <c:component id="handoff-tester"/>
+    </property>
+    <property id="frequency.failed" value="0">
+        <c:component id="handoff-tester"/>
+    </property>
+    <property id="frequency.timeout" value="0">
+        <c:component id="handoff-tester"/>
+    </property>
+    	
+	<property id="repriceInterval" value="20000">
+	    <c:component id="di-upstream"/>
+	</property>
+</configuration>

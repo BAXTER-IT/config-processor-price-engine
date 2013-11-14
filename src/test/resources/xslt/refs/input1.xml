@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<input1 xmlns="http://my.input1">
+    <data id="1">first string</data>
+    <data id="2">second string</data>
+    <sub>
+        <data id="3">third string</data>
+    </sub>
+</input1>

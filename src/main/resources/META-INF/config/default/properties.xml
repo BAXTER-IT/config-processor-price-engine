@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/generic-properties"
+    xmlns:c="http://baxter-it.com/config/component" xmlns:conf="http://baxter-it.com/config">
+
+
+    <property id="vendorType" value="Reuters">
+        <c:component id="reuters-rfa"/>
+    </property>
+
+    <property id="UDPVendorPort" value="7201">
+        <c:component id="reuters-rfa"/>
+    </property>
+
+    <property id="sequenceNumberName" value="NA">
+        <c:component id="reuters-rfa"/>
+    </property>
+
+
+    <!-- <property id="xmlManager.structuralesUser.xmlUserId" value="m">
+        <c:component id="price-engine-dbserver"/>
+    </property> -->
+
+    <property id="ALGOEngineClassName" value="com.baxter.pe.positionmanager.DefaultPortfolioFilterAlgoImpl">
+        <c:component id="price-engine-blotter"/>
+        <c:component id="price-engine-blotterserver"/>
+    </property>
+
+<!-- TODO review moving to separate file -->
+    <property id="runDIServer" value="NO">
+        <c:component id="price-engine-blotter"/>
+        <c:component id="price-engine-blotterserver"/>
+    </property>
+    <property id="blotterUDPPort" value="7777">
+        <c:component id="price-engine-blotterserver"/>
+    </property>
+
+    <property id="dLRWarningInterval" value="10000">
+        <c:component id="price-engine-fwdcontroller"/>
+    </property>
+ 
+<!-- Ratestore config TODO generate from maven config-->
+    <property id="ratestore.configFileName" value="http://192.168.90.213:4040/config-server/rest/com.baxter.pe/price-engine-broadcast/debug,xpdev22/asis?file=asis/ratestore.hibernate.cfg.xml">
+	<c:component id="price-engine-broadcast"/>
+ 	<c:component id="price-engine-blotterserver"/>
+    <c:component id="di-upstream"/>
+	</property> 
+
+    <!-- DI Upstream Tester -->
+    <property id="repriceInterval" value="2000">
+        <c:component id="di-upstream"/>
+    </property>     
+    <property id="streamingAmount" value="50000000">
+        <c:component id="di-upstream"/>
+    </property>     
+    <property id="safetyMargin" value="1.02">
+        <c:component id="di-upstream"/>
+    </property>     
+    
+    <!-- From Broadcast Comp -->
+    <property id="creditcheckmanager.timeout" value="8000">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <property id="creditcheckmanager.heartbeat.NumberOfRequiredHeartbeat" value="5">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <property id="creditcheckmanager.heartbeat.HeartbeatInterval" value="100">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <property id="watchDogInterval" value="0">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <property id="generateFakeIR" value="yes">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <property id="logServerPort" value="6804">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <property id="maxLatency" value="-1">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <property id="iORoundPercentage" value="0.80">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <property id="tradeEventManager.roundTripInterval" value="100">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <property id="handoffmanager.Upstream2HandOff.timeout" value="6000">
+        <c:component id="handoff-tester" />
+    </property>
+    <property id="frequency.filled" value="10">
+        <c:component id="handoff-tester" />
+    </property>
+    <property id="frequency.failed" value="0">
+        <c:component id="handoff-tester" />
+    </property>
+    <property id="frequency.timeout" value="0">
+        <c:component id="handoff-tester" />
+    </property>
+    
+    <!-- For Trading Tool -->
+	<conf:reference id="tradingToolReference" type="propertiesxml" componentId="trading-tool">
+		<c:component id="price-engine-blotter"/>
+	</conf:reference>
+    <property id="priceRefreshTime" value="500">
+        <c:component id="trading-tool"/>
+    </property>
+	<property id="calendar.nrOfPastYears" value="1">
+	    <c:component id="trading-tool"/>
+	</property>
+	<property id="calendar.nrOfNextYears" value="4">
+	    <c:component id="trading-tool"/>
+	</property>
+    
+    <!-- DBServer -->
+    <property id="toffile.primary" value="/opt/baxter/price-engine">
+        <c:component id="price-engine-dbserver"/>
+    </property>
+    <property id="toffile.secondary" value="/opt/baxter/price-engine">
+        <c:component id="price-engine-dbserver"/>
+    </property>
+    <property id="deleteLogins" value="true">
+        <c:component id="price-engine-dbserver"/>
+    </property>
+    <property id="dbUDPPort" value="-1">
+        <c:component id="price-engine-dbserver"/>
+    </property>
+    
+    <!-- Blotter -->
+    <property id="screenClose.di" value="Trading Tool">
+        <c:component id="price-engine-blotter"/>
+    </property>
+    <property id="countDownSeconds" value="30">
+        <c:component id="price-engine-blotter"/>
+    </property>
+    <!-- possible values are values from SwingConstants. Use 'off' to disable failedTrade popup. -->
+    <property id="failedTradePopupPosition" value="SOUTH_WEST">
+        <c:component id="price-engine-blotter"/>
+    </property>
+    <property id="pricedisplay.CPs_per_row" value="8">
+        <c:component id="price-engine-blotter"/>
+    </property>
+
+    <!-- BlotterServer -->
+    <property id="mmm.priceBufferSize" value="1000">
+        <c:component id="price-engine-blotterserver"/>
+    </property>
+    <property id="abos.accountNumbers" value="1210573">
+        <!--c:component id="price-engine-blotterserver"/-->
+    </property>
+
+    <!-- Servlet -->
+    <property id="smtpServer" value="192.168.9.100">
+        <c:component id="price-engine-servlet" />
+    </property>
+    <property id="debugSMTP" value="false">
+        <c:component id="price-engine-servlet" />
+    </property>
+	<property id="emailSubject" value="FeedbackSubject">
+        <c:component id="price-engine-servlet" />
+    </property>
+    <property id="emailFrom" value="customerfeedback@testbed.com">
+        <c:component id="price-engine-servlet" />
+    </property>
+    <property id="to" value="pdani@baxter-it.com,gabor@baxter-it.com">
+        <c:component id="price-engine-servlet" />
+    </property>
+    <property id="newsSource" value="/CDv2/conf/newsSource.txt">
+        <c:component id="price-engine-servlet" />
+    </property>
+    <property id="researchSource" value="/CDv2/conf/researchSource.txt">
+        <c:component id="price-engine-servlet" />
+    </property>
+	
+    <!-- Last look timeout -->
+    <property id="lastlookmanager.timeout" value="8000">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+    <!-- Last look ssp timeout.  If not set, lastlook timeout value is used for it.
+    <property id="lastlookmanager.timeout-ssp" value="8000">
+        <c:component id="price-engine-broadcast"/>
+    </property>
+     -->
+	
+</configuration>

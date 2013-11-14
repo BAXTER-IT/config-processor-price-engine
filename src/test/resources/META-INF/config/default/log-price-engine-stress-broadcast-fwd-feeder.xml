@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log">
+
+    <console-appender name="CONSOLE">
+        <layout>%m%n</layout>
+    </console-appender>
+   
+    <rolling-file-appender name="FILE" file="StressBroadcast.log" maxSize="5MB" backupIndex="10">
+        <layout>%m%n</layout>
+    </rolling-file-appender>
+
+    <logger name="ROOT">
+	<appender-ref ref="CONSOLE" />
+	<appender-ref ref="FILE" />
+    </logger>
+    
+</configuration>

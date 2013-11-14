@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://baxter-it.com/price-engine/conf/jms"
+    xmlns:tns="http://baxter-it.com/price-engine/conf/jms" xmlns:c="http://baxter-it.com/config/component" xmlns:conf="http://baxter-it.com/config"
+    xmlns:t="http://baxter-it.com/config/types" elementFormDefault="qualified">
+
+    <xs:import schemaLocation="types.xsd" namespace="http://baxter-it.com/config/types" />
+    <xs:import schemaLocation="component.xsd" namespace="http://baxter-it.com/config/component" />
+    <xs:import schemaLocation="config.xsd" namespace="http://baxter-it.com/config" />
+
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="node" type="tns:TNode" />
+                <xs:element name="authentication" type="tns:TAuthentication" />
+                <xs:element name="ssl" type="tns:TSSL" />
+                <xs:element name="manager" type="tns:TManager" />
+                <xs:group ref="tns:GChannel" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:group name="GChannel">
+        <xs:choice>
+            <xs:element name="topic" type="tns:TTopic" />
+            <xs:element name="queue" type="tns:TQueue" />
+        </xs:choice>
+    </xs:group>
+
+    <xs:complexType name="TChannel">
+        <xs:complexContent>
+            <xs:extension base="c:TWithComponents">
+                <xs:attribute name="name" type="xs:string" use="optional" />
+                <xs:attribute name="node" type="xs:IDREF" use="optional" />
+                <xs:attribute name="node2" type="xs:IDREF" use="optional" />
+                <xs:attribute name="authentication" type="xs:IDREF" use="optional" />
+                <xs:attribute name="manager" type="xs:IDREF" use="optional" />
+                <xs:attribute name="reconnect" type="t:TBoolean" use="optional" />
+                <xs:attribute name="compressed" type="t:TBoolean" use="optional" />
+                <xs:attribute name="ackMode" type="xs:string" use="optional" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TQueue">
+        <xs:complexContent>
+            <xs:extension base="tns:TChannel">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TTopic">
+        <xs:complexContent>
+            <xs:extension base="tns:TChannel">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TNode">
+        <xs:attribute name="id" type="xs:NCName" use="optional" />
+        <xs:attribute name="host" type="xs:string" use="optional" />
+        <xs:attribute name="port" type="xs:positiveInteger" use="optional" />
+        <xs:attribute name="router" type="xs:string" use="optional" />
+    </xs:complexType>
+
+    <xs:complexType name="TManager">
+        <xs:attribute name="id" type="xs:NCName" use="optional" />
+        <xs:attribute name="namingContextFactory" type="xs:string" use="optional" />
+        <xs:attribute name="providerUrl" type="xs:anyURI" use="optional" />
+        <xs:attribute name="queueConnectionFactory" type="xs:string" use="optional" />
+        <xs:attribute name="topicConnectionFactory" type="xs:string" use="optional" />
+    </xs:complexType>
+
+    <xs:complexType name="TSSL">
+        <xs:attribute name="id" type="xs:NCName" use="optional" />
+        <xs:attribute name="store" type="xs:anyURI" use="optional" />
+        <xs:attribute name="storePassword" type="xs:string" use="optional" />
+        <xs:attribute name="anonCipher" type="xs:string" use="optional" />
+    </xs:complexType>
+
+    <xs:complexType name="TAuthentication">
+        <xs:attribute name="id" type="xs:NCName" use="optional" />
+        <xs:attribute name="username" type="xs:string" use="optional" />
+        <xs:attribute name="password" type="xs:string" use="optional" />
+    </xs:complexType>
+
+</xs:schema>

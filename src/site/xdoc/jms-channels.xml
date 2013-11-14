@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Price Engine Configuration Processors</title>
+        <author email="ykryshchuk@n-ix.com.ua">Yuriy Kryshchuk</author>
+    </properties>
+
+    <body>
+        <section name="Channels">
+            <map id="channels">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Channel Name</th>
+                            <th>Channel Alias</th>
+                            <th>Description</th>
+                            <th>Components</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Topic</td>
+                            <td>DBBroadcast</td>
+                            <td><a id="broadcast">broadcast</a></td>
+                            <td>DBServer broadcasts DBEvents to the other components</td>
+                            <td>
+                                <ul>
+                                    <li>DBServer</li>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                    <li>Blotter</li>
+                                    <li>AdminTool</li>
+                                    <li>FwdControllerWithPillars</li>
+                                    <li>ForMonTW</li>
+                                    <li>TWServer</li>
+                                    <li>TrackWheelClient</li>
+                                    <li>Servlet</li>
+                                    <li>Validator</li>
+                                    <li>ReutersRFAPublisher</li>
+                                    <li>ReutersRFATibcoPublisher</li>
+                                    <li>MDPIFXALLConnector</li>
+                                    <li>CurrencyHolidayFromCSV</li>
+                                    <li>Vendor</li>
+                                    <li>FWDVendor</li>
+                                    <li>FxInsideVendor</li>
+                                    <li>TestFwdwPillarsVendor</li>
+                                    <li>TestVendor</li>
+                                    <li>PriceDisplayX</li>
+                                    <li>JMSManualTool</li>
+                                    <li>PositionLimitServlet (ServletConfig different format)</li>
+                                    <li>XMLServlet (ServletConfig different format)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>DBRequest</td>
+                            <td><a id="toDb">toDb</a></td>
+                            <td>Request-response communication between DBServer and DBConnecors</td>
+                            <td>
+                                <ul>
+                                    <li>DBServer</li>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                    <li>Blotter</li>
+                                    <li>AdminTool</li>
+                                    <li>FwdControllerWithPillars</li>
+                                    <li>ForMonTW</li>
+                                    <li>TWServer</li>
+                                    <li>TrackWheelClient</li>
+                                    <li>Servlet</li>
+                                    <li>Validator</li>
+                                    <li>ReutersRFAPublisher</li>
+                                    <li>ReutersRFATibcoPublisher</li>
+                                    <li>MDPIFXALLConnector</li>
+                                    <li>CurrencyHolidayFromCSV</li>
+                                    <li>Vendor</li>
+                                    <li>FWDVendor</li>
+                                    <li>FxInsideVendor</li>
+                                    <li>TestFwdwPillarsVendor</li>
+                                    <li>TestVendor</li>
+                                    <li>PriceDisplayX</li>
+                                    <li>JMSManualTool</li>
+                                    <li>PositionLimitServlet (ServletConfig different format)</li>
+                                    <li>XMLServlet (ServletConfig different format)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>Trade2DB</td>
+                            <td><a id="toDbtrade2Db">toDbtrade2Db</a></td>
+                            <td>This queue is used to send TradeRequest, Trade, TradeAcknowledge,
+                                TradePosition, UpdatePotValueInDB, DCPKTrade,QueryFxAllResult,
+                                FXGTResponse to DBServer</td>
+                            <td>
+                                <ul>
+                                    <li>DBServer</li>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>Vendors2Validator</td>
+                            <td><a id="vendor2validator">vendor2validator</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>CDVendor</li>
+                                    <li>EBSVendor</li>
+                                    <li>Validator</li>
+                                    <li>ReutersRFA</li>
+                                    <li>DemoVendor</li>
+                                    <li>LogVendor</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>Validator2TWS</td>
+                            <td><a id="validator2tws">validator2tws</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Validator</li>
+                                    <li>TWServer</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>TWS2Manufacturer</td>
+                            <td><a id="tws2manufacturer">tws2manufacturer</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                    <li>TWServer</li>
+                                    <li>PriceReceiverTest</li>
+                                    <li>StressBroadcast</li>
+                                    <li>TradabilityTool</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>TWC2Server</td>
+                            <td><a id="twc2tws">twc2tws</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Validator</li>
+                                    <li>TWServer</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>TWS2Client</td>
+                            <td><a id="tws2twc">tws2twc</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>TWServer</li>
+                                    <li>TrackWheelClient</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>FwdSource2Controller</td>
+                            <td><a id="vendor2fwdctrl">vendor2fwdctrl</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>DemoVendor</li>
+                                    <li>FwdControllerWithPillars</li>
+                                    <li>FWDVendor</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>FwdIRSource2Controller</td>
+                            <td><a id="vendor2fwdirctrl">vendor2fwdirctrl</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>IRDemoVendor</li>
+                                    <li>FWDInterestRateWithPillarsReutersRFA</li>
+                                    <li>FwdInterestRateControllerWithPillars</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>C2SFwdReq</td>
+                            <td><a id="fwdmon2fwdctrl">fwdmon2fwdctrl</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>FwdControllerWithPillars</li>
+                                    <li>ForMonTW</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>S2CFwdReq</td>
+                            <td><a id="fwdctrl2fwdmon">fwdctrl2fwdmon</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>FwdControllerWithPillars</li>
+                                    <li>ForMonTW</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>FwdController2Publisher</td>
+                            <td><a id="fwdctrl2publisher">fwdctrl2publisher</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                    <li>Validator</li>
+                                    <li>StressBroadcastFwdFeeder</li>
+                                    <li>FwdControllerWithPillars</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>FwdIRController2Publisher</td>
+                            <td><a id="fwdIRctrl2publisher">fwdIRctrl2publisher</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>FwdInterestRateControllerWithPillars</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>BlotterTrade</td>
+                            <td><a id="blotterTrade">blotterTrade</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                    <li>LogVendor</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>BlotterS2C</td>
+                            <td><a id="blotterServer2Client">blotterServer2Client</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Blotter</li>
+                                    <li>BlotterServer</li>
+                                    <li>FWDWithPillarsReutersRFA</li>
+                                    <li>TradeSenderStresserTool</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>BlotterPrice</td>
+                            <td><a id="blotterPrice">blotterPrice</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BlotterServer.java</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>BlotterC2S</td>
+                            <td><a id="client2BlotterServer">client2BlotterServer</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Blotter</li>
+                                    <li>BlotterServer</li>
+                                    <li>DiUpstreamTester</li>
+                                    <li>DI2UpstreamTopicListener</li>
+                                    <li>FWDWithPillarsReutersRFA</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>Client2DIServer</td>
+                            <td><a id="client2DIServer">client2DIServer</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>DIServer.java</li>
+                                    <li>Blotter.java</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>DIServerSender</td>
+                            <td><a id="diServer2Client">diServer2Client</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Blotter.java</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>DIServerSender</td>
+                            <td><a id="diServerSenderQueue">diServerSenderQueue</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>DIServer</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>Structurales2DB</td>
+                            <td><a id="xmlManager.structurales2DB">xmlManager.structurales2DB</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>DBServer</li>
+                                    <li>EStructuralesSystemTester</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>DB2Structurales</td>
+                            <td><a id="xmlManager.db2Structurales">xmlManager.db2Structurales</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>DBServer</li>
+                                    <li>EStructuralesSystemTester</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>Client2PositionManagerServer</td>
+                            <td><a id="positionManager.client2PositionManagerServer">positionManager.client2PositionManagerServer</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>TWServer</li>
+                                    <li>BlotterServer</li>
+                                    <li>BroadcastBase</li>
+                                    <li>Blotter</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>PositionManagerServer2Client</td>
+                            <td><a id="positionManager.positionManagerServer2Client">positionManager.positionManagerServer2Client</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                    <li>TWServer</li>
+                                    <li>Blotter</li>
+                                    <li>LogVendor</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>PositionManagerServer2TW</td>
+                            <td><a id="positionManager.positionManagerServer2TW">positionManager.positionManagerServer2TW</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BlotterServer</li>
+                                    <li>TWServer</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>BlotterServer2HedgeClientMessaging</td>
+                            <td><a id="positionManager.HedgeClientMessaging">positionManager.HedgeClientMessaging</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BlotterServer</li>
+                                    <li>BroadcastBase</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>FWDSVSender</td>
+                            <td><a id="toSender">toSender</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>FwdControllerWithPillars</li>
+                                    <li>FwdInterestRateControllerWithPillars</li>
+                                    <li>ForMonTW</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>FWDSVReceiver</td>
+                            <td><a id="fromReceiver">fromReceiver</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>FwdControllerWithPillars</li>
+                                    <li>FwdInterestRateControllerWithPillars</li>
+                                    <li>ForMonTW</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>DI2Upstream</td>
+                            <td><a id="DI2Upstream">DI2Upstream</a></td>
+                            <td>When there is no price in the system a request will be sent ot SAN
+                                instead of DI popup on Blotter</td>
+                            <td>
+                                <ul>
+                                    <li>BlotterServer</li>
+                                    <li>DiUpstreamTester</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>Vendor2DOBAlgo</td>
+                            <td><a id="Vendor2DOBAlgo">Vendor2DOBAlgo</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Vendor</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>MarketDataFromBroadcast2BS</td>
+                            <td><a id="marketDataFromBroadcast2BlotterServer">marketDataFromBroadcast2BlotterServer</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>ServletTrade</td>
+                            <td><a id="servletTrade">servletTrade</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>MDPIFXAllClientMessaging</li>
+                                    <li>MDPIFXALLConnector</li>
+                                    <li>WebClientMessaging</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>ServletStream</td>
+                            <td><a id="servletStream">servletStream</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>MDPIFXAllClientMessaging</li>
+                                    <li>MDPIFXALLConnector</li>
+                                    <li>WebClientMessaging</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>EppCommunicator2Apama</td>
+                            <td><a id="apama.sender">apama.sender</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Vendor</li>
+                                    <li>EppApamaTesterTool</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>Apama2EppCommunicator</td>
+                            <td><a id="apama.receiver">apama.receiver</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Vendor</li>
+                                    <li>EppApamaTesterTool</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>CreditCheckReceiver</td>
+                            <td><a id="creditcheckmanager">creditcheckmanager</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>TestCreditCheckManager</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>CreditCheckSender</td>
+                            <td><a id="senderCreditCheck">sender</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>CreditCheckSystemTester</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>CreditCheckSender</td>
+                            <td><a id="receiverCreditCheck">receiver</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>CreditCheckSystemTester</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>CreditCheckHeartbeat</td>
+                            <td><a id="heartbeat">heartbeat</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>CreditCheckSystemTester</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>StateObserver</td>
+                            <td><a id="ObserverTopic">ObserverTopic</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BlotterServer</li>
+                                    <li>BroadcastBase</li>
+                                    <li>DBServer</li>
+                                    <li>Servlet</li>
+                                    <li>AdminTool</li>
+                                    <li>Blotter</li>
+                                    <li>ForMonTW</li>
+                                    <li>TrackWheelClient</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>HandOff2Upstream</td>
+                            <td><a id="handoffmanager.HandOff2Upstream">handoffmanager.HandOff2Upstream</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>HandOffSystemTester.java</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>Upstream2HandOff</td>
+                            <td><a id="handoffmanager.Upstream2HandOff">handoffmanager.Upstream2HandOff</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>HandOffSystemTester.java</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>priceFeed</td>
+                            <td><a id="priceFeed">priceFeed</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>ReutersRFAPublisher</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>DcpkRequest</td>
+                            <td><a id="sender">sender</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>JMSManualTool</li>
+                                    <li>DCPKRequestRelay</li>
+                                    <li>TestCBAFXGTSystem</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>HandOffTestReceiver</td>
+                            <td><a id="receiver">receiver</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>JMSManualTool</li>
+                                    <li>TestCBAFXGTSystem</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>DCPKNode1</td>
+                            <td><a id="node0">node0</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>DCPKRequestRelay</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>DCPKNode2</td>
+                            <td><a id="node1">node1</a></td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>DCPKRequestRelay</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </map>
+        </section>
+
+        <section name="HA Channels">
+            <map id="HAchannels">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Channel Name</th>
+                            <th>Channel Alias</th>
+                            <th>Description</th>
+                            <th>Components</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Topic</td>
+                            <td>DBBroadcast2</td>
+                            <td>broadcast</td>
+                            <td>DBServer broadcasts DBEvents to the other components</td>
+                            <td>
+                                <ul>
+                                    <li>DBServer</li>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                    <li>Blotter</li>
+                                    <li>AdminTool</li>
+                                    <li>FwdControllerWithPillars</li>
+                                    <li>ForMonTW</li>
+                                    <li>TWServer</li>
+                                    <li>TrackWheelClient</li>
+                                    <li>Servlet</li>
+                                    <li>Validator</li>
+                                    <li>ReutersRFAPublisher</li>
+                                    <li>ReutersRFATibcoPublisher</li>
+                                    <li>MDPIFXALLConnector</li>
+                                    <li>CurrencyHolidayFromCSV</li>
+                                    <li>Vendor</li>
+                                    <li>FWDVendor</li>
+                                    <li>FxInsideVendor</li>
+                                    <li>TestFwdwPillarsVendor</li>
+                                    <li>TestVendor</li>
+                                    <li>PriceDisplayX</li>
+                                    <li>JMSManualTool</li>
+                                    <li>PositionLimitServlet (ServletConfig different format)</li>
+                                    <li>XMLServlet (ServletConfig different format)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>DBRequest2</td>
+                            <td>toDb</td>
+                            <td>Request-response communication between DBServer and DBConnecors</td>
+                            <td>
+                                <ul>
+                                    <li>DBServer</li>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                    <li>Blotter</li>
+                                    <li>AdminTool</li>
+                                    <li>FwdControllerWithPillars</li>
+                                    <li>ForMonTW</li>
+                                    <li>TWServer</li>
+                                    <li>TrackWheelClient</li>
+                                    <li>Servlet</li>
+                                    <li>Validator</li>
+                                    <li>ReutersRFAPublisher</li>
+                                    <li>ReutersRFATibcoPublisher</li>
+                                    <li>MDPIFXALLConnector</li>
+                                    <li>CurrencyHolidayFromCSV</li>
+                                    <li>Vendor</li>
+                                    <li>FWDVendor</li>
+                                    <li>FxInsideVendor</li>
+                                    <li>TestFwdwPillarsVendor</li>
+                                    <li>TestVendor</li>
+                                    <li>PriceDisplayX</li>
+                                    <li>JMSManualTool</li>
+                                    <li>PositionLimitServlet (ServletConfig different format)</li>
+                                    <li>XMLServlet (ServletConfig different format)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>Trade2DB2</td>
+                            <td>trade2Db</td>
+                            <td>This queue is used to send TradeRequest, Trade, TradeAcknowledge,
+                                TradePosition, UpdatePotValueInDB, DCPKTrade,QueryFxAllResult,
+                                FXGTResponse to DBServer</td>
+                            <td>
+                                <ul>
+                                    <li>DBServer</li>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Queue</td>
+                            <td>BlotterTrade2</td>
+                            <td>blotterTrade</td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BroadcastBase</li>
+                                    <li>BlotterServer</li>
+                                    <li>LogVendor</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>BlotterS2C2</td>
+                            <td>blotterServer2Client</td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Blotter</li>
+                                    <li>BlotterServer</li>
+                                    <li>FWDWithPillarsReutersRFA</li>
+                                    <li>TradeSenderStresserTool</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>BlotterPrice2</td>
+                            <td>blotterPrice</td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>BlotterServer.java</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>BlotterC2S2</td>
+                            <td>client2BlotterServer</td>
+                            <td>Empty description. Someone should describe it.</td>
+                            <td>
+                                <ul>
+                                    <li>Blotter</li>
+                                    <li>BlotterServer</li>
+                                    <li>DiUpstreamTester</li>
+                                    <li>DI2UpstreamTopicListener</li>
+                                    <li>FWDWithPillarsReutersRFA</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Topic</td>
+                            <td>DI2Upstream2</td>
+                            <td>DI2Upstream</td>
+                            <td>When there is no price in the system a request will be sent ot SAN
+                                instead of DI popup on Blotter</td>
+                            <td>
+                                <ul>
+                                    <li>BlotterServer</li>
+                                    <li>DiUpstreamTester</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </map>
+        </section>
+    </body>
+
+</document>

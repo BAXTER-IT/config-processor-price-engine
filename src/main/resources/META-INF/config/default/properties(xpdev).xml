@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/generic-properties"
+    xmlns:c="http://baxter-it.com/config/component" xmlns:conf="http://baxter-it.com/config">
+
+    <property id="deleteLogins" value="false">
+        <c:component id="price-engine-dbserver"/>
+    </property>
+
+    <property id="xmlManager.structuralesUser.xmlUserId" value="estruc">
+        <c:component id="price-engine-dbserver"/>
+    </property>     
+    <property id="abos.accountNumbers" value="1210573">
+        <c:component id="price-engine-blotterserver"/>
+    </property>
+
+    <!-- UDPport -->	
+    <property id="blotterUDPPort" value="6776">
+        <c:component id="price-engine-blotterserver"/>
+    </property>
+
+
+
+</configuration>

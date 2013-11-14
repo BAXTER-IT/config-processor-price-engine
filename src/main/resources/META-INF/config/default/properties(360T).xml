@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/generic-properties" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config">
+
+
+    <conf:reference id="CLIENTMESSAGING_QUICKFIX_INIFILE" type="qfixini">
+        <c:component id="price-engine-broadcast-plugin" />
+        <conf:parameter name="defaults">fix44</conf:parameter>
+        <conf:parameter name="session">fix44</conf:parameter>
+    </conf:reference>
+
+    <conf:reference id="SequenceIDStorageFileName" type="asis">
+        <c:component id="price-engine-broadcast-plugin" />
+        <conf:parameter name="file">fix44/fixSequences.txt</conf:parameter>
+    </conf:reference>
+
+</configuration>

@@ -1,0 +1,22 @@
+<configuration xmlns="http://baxter-it.com/price-engine/conf/jms" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config">
+
+    <node id="jms1HA" host="127.0.0.1" port="8001" router="router1" />
+    <node id="jms2HA" host="127.0.0.1" port="8002" router="router2" />
+    
+    <queue id="toDb" node2="jms2HA" />
+    <topic id="broadcast" node2="jms1HA" />
+    
+    <queue id="dcpk.HandOffTestReceiver" node2="jms1HA" >
+        <c:component id="dcpk-receiver" conf:skip="all" />
+    </queue>
+    
+    <queue id="dcpk.DCPKRequest" node2="jms2HA" />
+    
+    <queue id="toPlugin" node2="jms2HA">
+    </queue>
+    
+    <topic id="JmsStreamTopic" node2="jms2HA" >
+    </topic>
+	
+</configuration>

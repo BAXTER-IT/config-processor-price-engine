@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<input2 xmlns="http://my.input2">
+    <ref id="1">
+        <reference xpath="/i1:input1/i1:data[@id='2']" />
+    </ref>
+    <ref id="2">
+        <reference xpath="/i1:input1//i1:data[@id='3']" />
+    </ref>
+</input2>

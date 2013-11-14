@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/gui" xmlns:c="http://baxter-it.com/config/component">
+
+    <window id="wnd800x600" left="0" top="0" width="800" height="600">
+        <c:component id="price-engine-fwdmonitor" />
+        <c:component id="price-engine-trackwheel" />
+		<c:component id="trading-tool" />
+    </window>
+
+    <window id="wnd1024x768" left="0" top="0" width="1024" height="768">
+        <c:component id="price-engine-admintool" />
+        <c:component id="price-engine-blotter" />
+    </window>
+    
+    <flag id="behavior.popForwardAtWarning" value="false">
+        <c:component id="price-engine-fwdmonitor" />
+    </flag>
+    <flag id="behavior.popUpWithFocus" value="false">
+        <c:component id="price-engine-fwdmonitor" />
+    </flag>
+
+    <flag id="soundState" value="true">
+        <c:component id="price-engine-trackwheel" />
+    </flag>
+    <flag id="twFifty" value="false">
+        <c:component id="price-engine-trackwheel" />
+    </flag>
+    <color id="normal" red="242" green="247" blue="254">
+        <c:component id="price-engine-trackwheel" />
+    </color>
+    <color id="noPrice" red="215" green="233" blue="243">
+        <c:component id="price-engine-trackwheel" />
+    </color>
+    <color id="warning1" red="250" green="251" blue="225">
+        <c:component id="price-engine-trackwheel" />
+    </color>
+    <color id="warning2" red="253" green="233" blue="215">
+        <c:component id="price-engine-trackwheel" />
+    </color>
+
+    <flag id="popForward.AtTrade" value="true">
+        <c:component id="price-engine-blotter" />
+    </flag>
+    <flag id="popForward.AtPending" value="true">
+        <c:component id="price-engine-blotter" />
+    </flag>
+    <flag id="popForward.AtMRR" value="true">
+        <c:component id="price-engine-blotter" />
+    </flag>
+    <flag id="popForward.AtNEG" value="true">
+        <c:component id="price-engine-blotter" />
+    </flag>
+    <flag id="salesBlotter" value="true">
+        <c:component id="price-engine-blotter" />
+    </flag>
+    <flag id="useDIPanel" value="false">
+        <c:component id="price-engine-blotter" />
+    </flag>
+    <flag id="pricedisplay" value="true">
+        <c:component id="price-engine-blotter" />
+    </flag>
+    <sound id="missedTrade" value="res\alert.wav">
+        <c:component id="price-engine-blotter" />
+    </sound>
+    <sound id="failedTrade" value="res\alert.wav">
+        <c:component id="price-engine-blotter" />
+    </sound>
+    
+    
+</configuration>

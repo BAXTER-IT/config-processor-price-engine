@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/generic-properties"
+    xmlns:c="http://baxter-it.com/config/component">
+
+    <property id="validatorForEpp" value="true">
+        <c:component id="price-engine-validator" />
+    </property>
+    
+</configuration>

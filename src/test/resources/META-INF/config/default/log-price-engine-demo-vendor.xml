@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/config/log">
+
+    <console-appender name="CONSOLE">
+        <layout>DemoVendor %c{1} [%d{ISO8601}] %m%n</layout>
+    </console-appender>
+   
+    <rolling-file-appender name="FILE_DemoVendor" file="DemoVendor.log" maxSize="5MB" backupIndex="10">
+        <layout>DemoVendor[%d{ISO8601}][%p] - %m%n</layout>
+    </rolling-file-appender>
+
+	<rolling-file-appender name="FILE_DemoSPOT" file="DemoSPOT.log" maxSize="5MB" backupIndex="10">
+        <layout>DemoVendor[%d{ISO8601}][%p] - %m%n</layout>
+    </rolling-file-appender>
+	
+	<rolling-file-appender name="FILE_DemoFWD" file="DemoFWD.log" maxSize="5MB" backupIndex="10">
+        <layout>DemoVendor[%d{ISO8601}][%p] - %m%n</layout>
+    </rolling-file-appender>
+	
+	<rolling-file-appender name="FILE_DemoIR" file="DemoIR.log" maxSize="5MB" backupIndex="10">
+        <layout>DemoVendor[%d{ISO8601}][%p] - %m%n</layout>
+    </rolling-file-appender>
+	
+	
+    <logger name="com.baxter" additivity="false" level="TRACE">
+        <appender-ref ref="FILE_DemoVendor" />
+    </logger>
+
+    <logger name="SpotDemoVendor" additivity="false" level="TRACE">
+        <appender-ref ref="FILE_DemoSPOT" />
+    </logger>
+	
+	<logger name="DemoFWD" additivity="false" level="TRACE">
+        <appender-ref ref="FILE_DemoFWD" />
+    </logger>
+	
+	<logger name="DemoIR" additivity="false" level="TRACE">
+        <appender-ref ref="FILE_DemoIR" />
+    </logger>
+    
+</configuration>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://baxter-it.com/price-engine/conf/broadcast"
+    xmlns:tns="http://baxter-it.com/price-engine/conf/broadcast" xmlns:c="http://baxter-it.com/config/component"
+    xmlns:conf="http://baxter-it.com/config" elementFormDefault="qualified">
+
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="server" type="tns:TServer" />
+                <xs:element name="node" type="tns:TNode" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TNode">
+        <xs:attribute name="id" type="xs:ID" use="required" />
+        <xs:attribute name="host" type="xs:string" use="optional" />
+        <xs:attribute name="pricePort" type="xs:positiveInteger" use="optional" />
+        <xs:attribute name="channelPort" type="xs:positiveInteger" use="optional" />
+    </xs:complexType>
+
+    <xs:complexType name="TServer">
+        <xs:attribute name="id" type="xs:ID" use="required" />
+        <xs:attribute name="node" type="xs:IDREF" use="required" />
+    </xs:complexType>
+
+</xs:schema>

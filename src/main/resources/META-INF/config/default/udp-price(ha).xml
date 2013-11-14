@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/udp-price" xmlns:c="http://baxter-it.com/config/component">
+
+<!-- Commented due to the code that loads this. Has to be fixed in MMMPricesToDB
+    <connection id="mmm.broadcast.2" port="17002">
+        <c:component id="price-engine-blotterserver" broadcastMode="price" />
+        <server id="default" broadcastId="broadcast2" />
+    </connection>
+	-->
+    
+</configuration>

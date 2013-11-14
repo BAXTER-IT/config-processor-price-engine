@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://baxter-it.com/price-engine/conf/db">
+    
+    <connection id="dbConnection" url="${devel.cfg.database.url}" credentials="${devel.cfg.database.credentials}"/>
+    
+</configuration>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://baxter-it.com/price-engine/conf/gui"
+    xmlns:tns="http://baxter-it.com/price-engine/conf/gui" xmlns:c="http://baxter-it.com/config/component" xmlns:conf="http://baxter-it.com/config"
+    xmlns:t="http://baxter-it.com/config/types" elementFormDefault="qualified">
+
+    <xs:import schemaLocation="types.xsd" namespace="http://baxter-it.com/config/types" />
+    <xs:import schemaLocation="component.xsd" namespace="http://baxter-it.com/config/component" />
+    <xs:import schemaLocation="config.xsd" namespace="http://baxter-it.com/config" />
+
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="window" type="tns:TWindow" />
+                <xs:element name="color" type="tns:TColor" />
+                <xs:element name="flag" type="tns:TFlag" />
+                <xs:element name="sound" type="tns:TSound" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TWindow">
+        <xs:complexContent>
+            <xs:extension base="c:TWithComponents">
+                <xs:attribute name="left" type="xs:integer" use="optional" />
+                <xs:attribute name="top" type="xs:integer" use="optional" />
+                <xs:attribute name="width" type="xs:integer" use="optional" />
+                <xs:attribute name="height" type="xs:integer" use="optional" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TColor">
+        <xs:complexContent>
+            <xs:extension base="c:TWithComponents">
+                <xs:attribute name="red" type="xs:unsignedByte" use="optional" />
+                <xs:attribute name="green" type="xs:unsignedByte" use="optional" />
+                <xs:attribute name="blue" type="xs:unsignedByte" use="optional" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TFlag">
+        <xs:complexContent>
+            <xs:extension base="c:TWithComponents">
+                <xs:attribute name="value" type="xs:string" use="optional" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TSound">
+        <xs:complexContent>
+            <xs:extension base="c:TWithComponents">
+                <xs:attribute name="value" type="xs:string" use="optional" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Price Engine Components Configuration</title>
+        <author email="ykryshchuk@n-ix.com.ua">Yuriy Kryshchuk</author>
+    </properties>
+
+    <body>
+        <section name="Overview">
+            <p>This document summarizes the configuration needed for all Price Engine
+                components...</p>
+        </section>
+
+        <section name="Price Engine Components">
+
+            <subsection name="DBServer">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                    <li>Database Connection. </li>
+                    <li>LDAP Configuration</li>
+                    <li>toffile</li>
+                    <li>dbudbport</li>
+                    <li>deletelogins</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#trade2Db">trade2Db</a></li>
+                    <li><a href="jms-channels.html#xmlManager.structurales2DB">xmlManager.structurales2DB</a></li>
+                    <li><a href="jms-channels.html#xmlManager.db2Structurales">xmlManager.db2Structurales</a></li>
+                    <li><a href="jms-channels.html#ObserverTopic">ObserverTopic</a></li>
+                </ul>
+            </subsection>
+
+            <subsection name="Blotter Server">
+                <ol>
+                    <li>JMS Channels Configuration. </li>
+                    <li>mmm connections</li>
+                    <li>blotterUDPPort</li>
+                    <li>abos connection</li>
+                    <li>runDIServer</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#trade2Db">trade2Db</a></li>
+                    <li><a href="jms-channels.html#tws2manufacturer">tws2manufacturer</a></li>
+                    <li><a href="jms-channels.html#fwdctrl2publisher">fwdctrl2publisher</a></li>
+                    <li><a href="jms-channels.html#blotterTrade">blotterTrade</a></li>
+                    <li><a href="jms-channels.html#blotterServer2Client">blotterServer2Client</a></li>
+                    <li><a href="jms-channels.html#blotterPrice">blotterPrice</a></li>
+                    <li><a href="jms-channels.html#client2BlotterServer">client2BlotterServer</a></li>
+                    <li><a href="jms-channels.html#positionManager.client2PositionManagerServer">positionManager.client2PositionManagerServer</a></li>
+                    <li><a href="jms-channels.html#positionManager.positionManagerServer2Client">positionManager.positionManagerServer2Client</a></li>
+                    <li><a href="jms-channels.html#positionManager.positionManagerServer2TW">positionManager.positionManagerServer2TW</a></li>
+                    <li><a href="jms-channels.html#positionManager.HedgeClientMessaging">positionManager.HedgeClientMessaging</a></li>
+                    <li><a href="jms-channels.html#DI2Upstream">DI2Upstream</a></li>
+                    <li><a href="jms-channels.html#marketDataFromBroadcast2BlotterServer">marketDataFromBroadcast2BlotterServer</a></li>
+                    <li><a href="jms-channels.html#ObserverTopic">ObserverTopic</a></li>
+                </ul>
+            </subsection>
+
+            <subsection name="TrackWheel Servers">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                    <li>currencypairs and prots (currencypairs_udp.dat)</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#validator2tws">validator2tws</a></li>
+                    <li><a href="jms-channels.html#tws2manufacturer">tws2manufacturer</a></li>
+                    <li><a href="jms-channels.html#twc2tws">twc2tws</a></li>
+                    <li><a href="jms-channels.html#tws2twc">tws2twc</a></li>
+                    <li><a href="jms-channels.html#positionManager.client2PositionManagerServer">positionManager.client2PositionManagerServer</a></li>
+                    <li><a href="jms-channels.html#positionManager.positionManagerServer2Client">positionManager.positionManagerServer2Client</a></li>
+                    <li><a href="jms-channels.html#positionManager.positionManagerServer2TW">positionManager.positionManagerServer2TW</a></li>
+                </ul>
+            </subsection>
+
+            <subsection name="Dashboard Servlet"/>
+
+            <subsection name="Validators">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                    <li>validatorForEPP</li>
+                    <li>currencypairs and prots (currencypairs.dat)</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#vendor2validator">vendor2validator</a></li>
+                    <li><a href="jms-channels.html#validator2tws">validator2tws</a></li>
+                    <li><a href="jms-channels.html#twc2tws">twc2tws</a></li>
+                    <li><a href="jms-channels.html#fwdctrl2publisher">fwdctrl2publisher</a></li>
+                </ul>
+            </subsection>
+
+            <subsection name="Forward Controllers">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                    <li>dLRWarningInterval</li>
+                    <li>fwdcurrencypairs and prots (fwdcurrencypairs.dat)</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#vendor2fwdctrl">vendor2fwdctrl</a></li>
+                    <li><a href="jms-channels.html#fwdmon2fwdctrl">fwdmon2fwdctrl</a></li>
+                    <li><a href="jms-channels.html#fwdctrl2fwdmon">fwdctrl2fwdmon</a></li>
+                    <li><a href="jms-channels.html#fwdctrl2publisher">fwdctrl2publisher</a></li>
+                    <li><a href="jms-channels.html#toSender">toSender</a></li>
+                    <li><a href="jms-channels.html#fromReceiver">fromReceiver</a></li>
+                </ul>
+            </subsection>
+
+            <subsection name="Vendors"/>
+
+            <subsection name="Broadcast">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                    <li>stpConfigFileName</li>
+                    <li>watchDogInterval</li>
+                    <li>udpPort</li>
+                    <li>logServerPort</li>
+                    <li>maxLatency</li>
+                    <li>broadcastNode</li>
+                    <li>uDPClientConnectionPort</li>
+                    <li>iORoundPercentage</li>
+                    <li>tradeEventManager</li>
+                    <li>generateFakeIR</li>
+                    <li>tws2manufacturer</li>
+                    <li>creditcheckmanager (properties_creditcheck.xml)</li>
+                    <li>handoffmanager (properties_handoff.xml)</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#trade2Db">trade2Db</a></li>
+                    <li><a href="jms-channels.html#tws2manufacturer">tws2manufacturer</a></li>
+                    <li><a href="jms-channels.html#fwdctrl2publisher">fwdctrl2publisher</a></li>
+                    <li><a href="jms-channels.html#fwdIRctrl2publisher">fwdIRctrl2publisher</a></li>
+                    <li><a href="jms-channels.html#blotterTrade">blotterTrade</a></li>
+                    <li><a href="jms-channels.html#positionManager.client2PositionManagerServer">positionManager.client2PositionManagerServer</a></li>
+                    <li><a href="jms-channels.html#positionManager.positionManagerServer2Client">positionManager.positionManagerServer2Client</a></li>
+                    <li><a href="jms-channels.html#positionManager.HedgeClientMessaging">positionManager.HedgeClientMessaging</a></li>
+                    <li><a href="jms-channels.html#marketDataFromBroadcast2BlotterServer">marketDataFromBroadcast2BlotterServer</a></li>
+                    <li><a href="jms-channels.html#creditcheckmanager">creditcheckmanager</a></li>
+                    <li><a href="jms-channels.html#ObserverTopic">ObserverTopic</a></li>
+                    <li><a href="jms-channels.html#handoffmanager.HandOff2Upstream">handoffmanager.HandOff2Upstream</a></li>
+                    <li><a href="jms-channels.html#handoffmanager.Upstream2HandOff">handoffmanager.Upstream2HandOff</a></li>
+                </ul>
+            </subsection>
+
+            <subsection name="AdminTool">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                    <li>snmp</li>
+                    <li>bounds</li>
+                    <li>udpPriceParams</li>
+                    <li>uniqueMarketPort</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#ObserverTopic">ObserverTopic</a></li>
+                </ul>
+            </subsection>
+
+            <subsection name="Blotter">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                    <li>popForward</li>
+                    <li>uDPClient2Server</li>
+                    <li>bounds</li>
+                    <li>riskManager</li>
+                    <li>pricedisplay</li>
+                    <li>downarrowFile</li>
+                    <li>resourceDirectory</li>
+                    <li>salesBlotter</li>
+                    <li>countDownSeconds</li>
+                    <li>pricedisplay</li>
+                    <li>uniqueBlotterPort</li>
+                    <li>tradingToolPropertyFile</li>
+                    <li>showFailedTradePopup</li>
+                    <li>failedTradePopupPosition</li>
+                    <li>sound</li>
+                    <li>screenClose</li>
+                    <li>runDIServer</li>
+                    <li>useDIPanel</li>
+                    <li>ALGOEngineClassName ???</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#blotterServer2Client">blotterServer2Client</a></li>
+                    <li><a href="jms-channels.html#client2BlotterServer">client2BlotterServer</a></li>
+                    <li><a href="jms-channels.html#client2DIServer">client2DIServer</a></li>
+                    <li><a href="jms-channels.html#diServer2Client">diServer2Client</a></li>
+                    <li><a href="jms-channels.html#positionManager.client2PositionManagerServer">positionManager.client2PositionManagerServer</a></li>
+                    <li><a href="jms-channels.html#positionManager.positionManagerServer2Client">positionManager.positionManagerServer2Client</a></li>
+                    <li><a href="jms-channels.html#ObserverTopic">ObserverTopic</a></li>
+                </ul>
+            </subsection>
+
+            <subsection name="TradingTool">
+                <ol>
+                    <li>ServletUrl</li>
+                    <li>ServletUrl2</li>
+                    <li>priceRefreshTime</li>
+                    <li>enableLogger</li>
+                    <li>userData</li>
+                    <li>Password</li>
+                </ol>
+                <h5>Optional</h5>
+                <ol>
+                    <li><a href="jms-channels.html#messagesTime">messagesTime</a></li>
+                    <li><a href="jms-channels.html#connectionConnectTimeout">connectionConnectTimeout</a></li>
+                    <li><a href="jms-channels.html#connectionReadTimeout">connectionReadTimeout</a></li>
+                    <li><a href="jms-channels.html#verbose">verbose</a></li>
+                </ol>
+            </subsection>
+
+            <subsection name="Forwards Monitor">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                    <li>behavior</li>
+                    <li>bounds</li>
+                    <li>uDPPortForMon</li>
+                    <li>uniqueForMonPort</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#fwdmon2fwdctrl">fwdmon2fwdctrl</a></li>
+                    <li><a href="jms-channels.html#fwdctrl2fwdmon">fwdctrl2fwdmon</a></li>
+                    <li><a href="jms-channels.html#toSender">toSender</a></li>
+                    <li><a href="jms-channels.html#fromReceiver">fromReceiver</a></li>
+                    <li><a href="jms-channels.html#ObserverTopic">ObserverTopic</a></li>
+                </ul>
+            </subsection>
+
+            <subsection name="TrackWheel">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                    <li>bounds</li>
+                    <li>uDBPort</li>
+                    <li>uniqueTrackwheelPort</li>
+                    <li>soundState</li>
+                    <li>type</li>
+                    <li>colors</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#broadcast">broadcast</a></li>
+                    <li><a href="jms-channels.html#toDb">toDb</a></li>
+                    <li><a href="jms-channels.html#tws2twc">tws2twc</a></li>
+                    <li><a href="jms-channels.html#ObserverTopic">ObserverTopic</a></li>
+                </ul>
+            </subsection>
+
+        </section>
+
+        <section name="ClientMessaging Plugins">
+            
+            <subsection name="WebClientMessaging">
+                <ol>
+                    <li>JMS Channels Configuration.</li>
+                </ol>
+                <h5>JMS Channels</h5>
+                <ul>
+                    <li><a href="jms-channels.html#servletTrade">servletTrade</a></li>
+                    <li><a href="jms-channels.html#servletStream">servletStream</a></li>
+                </ul>
+            </subsection>
+            
+            <subsection name="Bloomberg"/>
+            
+            <subsection name="FXAll"/>
+
+        </section>
+
+    </body>
+
+</document>
