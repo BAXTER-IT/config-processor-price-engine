@@ -10,7 +10,7 @@
 
     <groupId>com.baxter.config.processor.pe</groupId>
     <artifactId>baxter-config-processor-price-engine</artifactId>
-    <version>1.3.4-SNAPSHOT</version>
+    <version>1.3.4</version>
 
     <name>Configuration Processor for Price Engine</name>
     <description>Configuration processor to be used with Baxter Configuration Server.</description>
@@ -23,7 +23,7 @@
         <connection>scm:git:ssh://git@git.cloudbees.com/baxter/config-processor-price-engine.git</connection>
         <developerConnection>scm:git:ssh://git@git.cloudbees.com/baxter/config-processor-price-engine.git</developerConnection>
         <url>ssh://git@git.cloudbees.com/baxter/config-processor-price-engine.git</url>
-        <tag>HEAD</tag>
+        <tag>baxter-config-processor-price-engine-1.3.4</tag>
     </scm>
 
     <build>
