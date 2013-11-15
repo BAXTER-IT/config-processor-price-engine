@@ -103,7 +103,7 @@
                                 <id>build-deb-installer</id>
                                 <configuration>
                                     <deb>
-                                        <depends>${deb.config-server.dep},statistics-config-processor</depends>
+                                        <depends>${deb.config-server.dep},baxter-config-processor-statistics</depends>
                                         <replaces>price-engine-config-processor</replaces>
                                     </deb>
                                 </configuration>
@@ -132,7 +132,7 @@
                                 <conflict>price-engine-config-processor</conflict>
                             </conflicts>
                             <requires combine.children="append">
-                                <require>baxter-statistics-config-processor</require>
+                                <require>baxter-config-processor-statistics</require>
                             </requires>
                         </configuration>
                     </plugin>
