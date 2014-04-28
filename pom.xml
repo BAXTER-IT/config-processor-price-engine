@@ -20,9 +20,9 @@
     <inceptionYear>2013</inceptionYear>
 
     <scm>
-        <connection>scm:git:ssh://git@git.cloudbees.com/baxter/config-processor-price-engine.git</connection>
-        <developerConnection>scm:git:ssh://git@git.cloudbees.com/baxter/config-processor-price-engine.git</developerConnection>
-        <url>ssh://git@git.cloudbees.com/baxter/config-processor-price-engine.git</url>
+        <connection>scm:git:ssh://git@github.com:BAXTER-IT/config-processor-price-engine.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:BAXTER-IT/config-processor-price-engine.git</developerConnection>
+        <url>ssh://git@github.com:BAXTER-IT/config-processor-price-engine.git</url>
         <tag>HEAD</tag>
     </scm>
 
