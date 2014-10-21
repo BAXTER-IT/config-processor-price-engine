@@ -12,7 +12,7 @@
 		</processor>
 		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
 			type="log4j">
-			<parameter name="stylesheet">baxterxsl:log4j.xsl</parameter>
+			<parameter name="stylesheet">pelog4j.xsl</parameter>
 		</processor>
 		<processor class="com.baxter.config.processor.impl.XSLTProcessor"
 			type="logback">
