@@ -10,13 +10,6 @@
         <xsl:param name="suffix" select="''" />
 	<xsl:if test="@driver = 'com.microsoft.sqlserver.jdbc.SQLServerDriver'">
 	    <entry>
-                <xsl:attribute name="key">
-                	<xsl:text>dbValidationQuery</xsl:text>
-                        <xsl:value-of select="$suffix" />
-                </xsl:attribute>
-                <xsl:value-of select="@dbValidationQuery" />
-            </entry>
-	    <entry>
 	    <xsl:attribute name="key">
 	        <xsl:text>msSQL2005</xsl:text>
 	        <xsl:value-of select="$suffix" />
@@ -38,6 +31,15 @@
             </xsl:attribute>
 			<xsl:value-of select="@url" />
 		</entry>
+
+	    <entry>
+                <xsl:attribute name="key">
+                	<xsl:text>dbValidationQuery</xsl:text>
+                        <xsl:value-of select="$suffix" />
+                </xsl:attribute>
+                <xsl:value-of select="@dbValidationQuery" />
+            </entry>
+
 		<xsl:choose>
 			<xsl:when test="@credentials">
 				<entry>
