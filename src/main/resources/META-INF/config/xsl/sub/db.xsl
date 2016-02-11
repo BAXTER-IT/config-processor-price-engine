@@ -39,6 +39,13 @@
                 </xsl:attribute>
                 <xsl:value-of select="@dbValidationQuery" />
             </entry>
+	    <entry>
+                <xsl:attribute name="key">
+                	<xsl:text>dbValidationQueryInterval</xsl:text>
+                        <xsl:value-of select="$suffix" />
+                </xsl:attribute>
+                <xsl:value-of select="@dbValidationQueryInterval" />
+            </entry>
 
 		<xsl:choose>
 			<xsl:when test="@credentials">
