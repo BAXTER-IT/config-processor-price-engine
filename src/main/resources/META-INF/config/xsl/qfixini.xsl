@@ -38,19 +38,19 @@
     </xsl:template>
 
 
-    <xsl:template match="qfix:default[text()='true']">
+    <xsl:template match="qfix:default[text()='true'] | qfix:option[text()='true']">
         <xsl:value-of select="@id" />
         <xsl:text>=Y</xsl:text>
         <xsl:call-template name="CRLF" />
     </xsl:template>
 
-    <xsl:template match="qfix:default[text()='false']">
+    <xsl:template match="qfix:default[text()='false'] | qfix:option[text()='false']">
         <xsl:value-of select="@id" />
         <xsl:text>=N</xsl:text>
         <xsl:call-template name="CRLF" />
     </xsl:template>
 
-    <xsl:template match="qfix:default">
+    <xsl:template match="qfix:default | qfix:option">
         <xsl:value-of select="@id" />
         <xsl:text>=</xsl:text>
         <xsl:value-of select="." />
@@ -58,7 +58,15 @@
     </xsl:template>
 
     <xsl:template match="qfix:defaults">
+        <xsl:apply-templates select="../qfix:connection[@id=current()/qfix:connection-ref/@id]" />
+        <xsl:apply-templates select="../qfix:time[@id=current()/qfix:time-ref/@id]" />
         <xsl:apply-templates select="qfix:default" />
+        <xsl:for-each select="conf:reference">
+            <xsl:value-of select="@id" />
+            <xsl:text>=</xsl:text>
+            <xsl:apply-templates select="." mode="url" />
+            <xsl:call-template name="CRLF" />
+        </xsl:for-each>
     </xsl:template>
 
     <xsl:template name="render-default-section">
