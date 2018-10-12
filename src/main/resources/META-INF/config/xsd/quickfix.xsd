@@ -25,7 +25,10 @@
         <xs:attribute name="beginString" type="xs:string" use="optional" />
         <xs:attribute name="time" type="xs:IDREF" use="optional" />
         <xs:attribute name="connection" type="xs:IDREF" use="optional" />
+        <xs:attribute name="sender" type="xs:string" use="optional" />
         <xs:attribute name="target" type="xs:string" use="optional" />
+        <xs:attribute name="socketAcceptPort" type="xs:positiveInteger" use="optional" />
+		<xs:attribute name="socketConnectPort" type="xs:positiveInteger" use="optional" />
         <xs:attribute name="heartbeatInterval" type="xs:positiveInteger" use="optional" />
     </xs:complexType>
 
@@ -49,6 +52,7 @@
 
     <xs:complexType name="TTime">
         <xs:attribute name="id" type="xs:NCName" use="required" />
+        <xs:attribute name="type" type="xs:string" use="optional" />
         <xs:attribute name="start" type="tns:TClockTime" use="optional" />
         <xs:attribute name="end" type="tns:TClockTime" use="optional" />
         <xs:attribute name="startDay" type="tns:TDayOfWeek" use="optional" />

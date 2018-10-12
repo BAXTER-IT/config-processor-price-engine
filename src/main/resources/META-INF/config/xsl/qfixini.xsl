@@ -81,6 +81,9 @@
         <xsl:text>BeginString=</xsl:text>
         <xsl:value-of select="@beginString" />
         <xsl:call-template name="CRLF" />
+		<xsl:text>SenderCompID=</xsl:text>
+        <xsl:value-of select="@sender" />
+        <xsl:call-template name="CRLF" />
         <xsl:text>TargetCompID=</xsl:text>
         <xsl:value-of select="@target" />
         <xsl:call-template name="CRLF" />
@@ -124,13 +127,20 @@
         <xsl:call-template name="CRLF" />
     </xsl:template>
 
-    <xsl:template match="qfix:connection">
-        <xsl:text>SocketConnectPort=</xsl:text>
-        <xsl:value-of select="@port" />
-        <xsl:call-template name="CRLF" />
-        <xsl:text>SocketConnectHost=</xsl:text>
-        <xsl:value-of select="@host" />
-        <xsl:call-template name="CRLF" />
+   <xsl:template match="qfix:connection">
+		<xsl:if test="@type = 'initiator'">
+			<xsl:text>SocketConnectPort=</xsl:text>
+			<xsl:value-of select="@port" />
+			<xsl:call-template name="CRLF" />
+			<xsl:text>SocketConnectHost=</xsl:text>
+			<xsl:value-of select="@host" />
+			<xsl:call-template name="CRLF" />
+		</xsl:if>
+		<xsl:if test="@type = 'acceptor'">
+			<xsl:text>SocketAcceptPort=</xsl:text>
+			<xsl:value-of select="@port" />
+			<xsl:call-template name="CRLF" />
+		</xsl:if>
         <xsl:if test="@resetOnLogon = 'true'">
             <xsl:text>ResetOnLogon=Y</xsl:text>
             <xsl:call-template name="CRLF" />
