@@ -97,6 +97,30 @@
         <xsl:apply-templates select="../qfix:connection[@id=current()/@connection]" />
     </xsl:template>
 
+   <xsl:template match="qfix:connection">
+   		<xsl:text>ConnectionType=</xsl:text>
+        <xsl:value-of select="@type" />
+        <xsl:call-template name="CRLF" />
+		<xsl:if test="@type = 'initiator'">
+			<xsl:text>SocketConnectPort=</xsl:text>
+			<xsl:value-of select="@port" />
+			<xsl:call-template name="CRLF" />
+			<xsl:text>SocketConnectHost=</xsl:text>
+			<xsl:value-of select="@host" />
+			<xsl:call-template name="CRLF" />
+		</xsl:if>
+		<xsl:if test="@type = 'acceptor'">
+			<xsl:text>SocketAcceptPort=</xsl:text>
+			<xsl:value-of select="@port" />
+			<xsl:call-template name="CRLF" />
+		</xsl:if>
+        <xsl:if test="@resetOnLogon = 'true'">
+            <xsl:text>ResetOnLogon=Y</xsl:text>
+            <xsl:call-template name="CRLF" />
+        </xsl:if>
+        <xsl:apply-templates select="qfix:ssl" />
+    </xsl:template>
+   
     <xsl:template match="qfix:time">
         <xsl:text>StartTime=</xsl:text>
         <xsl:value-of select="@start" />
@@ -125,27 +149,6 @@
         <xsl:text>SocketKeyStorePassword=</xsl:text>
         <xsl:value-of select="@password" />
         <xsl:call-template name="CRLF" />
-    </xsl:template>
-
-   <xsl:template match="qfix:connection">
-		<xsl:if test="@type = 'initiator'">
-			<xsl:text>SocketConnectPort=</xsl:text>
-			<xsl:value-of select="@port" />
-			<xsl:call-template name="CRLF" />
-			<xsl:text>SocketConnectHost=</xsl:text>
-			<xsl:value-of select="@host" />
-			<xsl:call-template name="CRLF" />
-		</xsl:if>
-		<xsl:if test="@type = 'acceptor'">
-			<xsl:text>SocketAcceptPort=</xsl:text>
-			<xsl:value-of select="@port" />
-			<xsl:call-template name="CRLF" />
-		</xsl:if>
-        <xsl:if test="@resetOnLogon = 'true'">
-            <xsl:text>ResetOnLogon=Y</xsl:text>
-            <xsl:call-template name="CRLF" />
-        </xsl:if>
-        <xsl:apply-templates select="qfix:ssl" />
     </xsl:template>
 
 </xsl:stylesheet>
