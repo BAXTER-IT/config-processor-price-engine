@@ -24,6 +24,7 @@
             <!--j:system id="javalib" name="java.library.path" var="JAVALIB_PATH"/-->
             <j:system id="translaccel" name="sun.java2d.translaccel" value="true"/>
             <j:system id="ddscale" name="sun.java2d.ddscale" value="true"/>
+			<j:system id="d3d" name="sun.java2d.d3d" value="false"/>
         </xsl:variable>
         <xsl:apply-templates select="$root/j:configuration"/>
     </xsl:template>
@@ -40,6 +41,7 @@
         <xsl:apply-templates select="/j:system[@id='javalib']"/>
         <xsl:apply-templates select="/j:system[@id='translaccel']"/>
         <xsl:apply-templates select="/j:system[@id='ddscale']"/>
+		<xsl:apply-templates select="/j:system[@id='d3d']"/>
     </xsl:template>
 
 </xsl:stylesheet>
