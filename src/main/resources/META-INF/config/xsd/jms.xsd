@@ -60,6 +60,10 @@
         <xs:attribute name="host" type="xs:string" use="optional" />
         <xs:attribute name="port" type="xs:positiveInteger" use="optional" />
         <xs:attribute name="router" type="xs:string" use="optional" />
+        <xs:attribute name="providerUrl" type="xs:string" use="optional" />
+        <xs:attribute name="namingContextFactory" type="xs:string" use="optional" />
+        <xs:attribute name="queueConnectionFactory" type="xs:string" use="optional" />
+        <xs:attribute name="topicConnectionFactory" type="xs:string" use="optional" />
     </xs:complexType>
 
     <xs:complexType name="TManager">

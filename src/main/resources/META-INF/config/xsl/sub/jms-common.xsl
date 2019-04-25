@@ -90,6 +90,38 @@
             </xsl:attribute>
             <xsl:value-of select="@port" />
         </entry>
+        <xsl:if test="@providerUrl">
+	        <entry>
+	            <xsl:attribute name="key">
+	                <xsl:text>ProviderUrl</xsl:text>
+	            </xsl:attribute>
+	            <xsl:value-of select="@providerUrl" />
+	        </entry>
+        </xsl:if>
+        <xsl:if test="@namingContextFactory">
+	        <entry>
+	            <xsl:attribute name="key">
+	                <xsl:text>NamingContextFactory</xsl:text>
+	            </xsl:attribute>
+	            <xsl:value-of select="@namingContextFactory" />
+	        </entry>
+        </xsl:if>
+        <xsl:if test="@queueConnectionFactory">
+	        <entry>
+	            <xsl:attribute name="key">
+	                <xsl:text>QueueConnectionFactory</xsl:text>
+	            </xsl:attribute>
+	            <xsl:value-of select="@queueConnectionFactory" />
+	        </entry>
+        </xsl:if>
+        <xsl:if test="@topicConnectionFactory">
+	        <entry>
+	            <xsl:attribute name="key">
+	                <xsl:text>TopicConnectionFactory</xsl:text>
+	            </xsl:attribute>
+	            <xsl:value-of select="@topicConnectionFactory" />
+	        </entry>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="jms:queue[@manager]">
