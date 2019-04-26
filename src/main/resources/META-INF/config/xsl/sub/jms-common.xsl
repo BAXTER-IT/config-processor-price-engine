@@ -210,7 +210,7 @@
                         <xsl:value-of select="$path" />
                     </xsl:attribute>
                     <entry key="TName">
-                        <xsl:value-of select="@name" />
+                        <xsl:value-of select="concat(../jms:node[@id=current()/@node]/@topicPretag, @name, ../jms:node[@id=current()/@node]/@topicPosttag)" />
                     </entry>
                     <xsl:apply-templates select="@reconnect" />
                     <xsl:apply-templates select="@compressed" />
@@ -235,7 +235,7 @@
                         <xsl:value-of select="$path" />
                     </xsl:attribute>
                     <entry key="QName">
-                        <xsl:value-of select="@name" />
+                        <xsl:value-of select="concat(../jms:node[@id=current()/@node]/@queuePretag, @name, ../jms:node[@id=current()/@node]/@queuePosttag)" />
                     </entry>
                     <entry key="QRouter">
                         <xsl:value-of select="../jms:node[@id=current()/@node]/@router" />

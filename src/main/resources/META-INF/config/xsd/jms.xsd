@@ -64,6 +64,10 @@
         <xs:attribute name="namingContextFactory" type="xs:string" use="optional" />
         <xs:attribute name="queueConnectionFactory" type="xs:string" use="optional" />
         <xs:attribute name="topicConnectionFactory" type="xs:string" use="optional" />
+        <xs:attribute name="topicPretag" type="xs:string" use="optional" />
+        <xs:attribute name="queuePretag" type="xs:string" use="optional" />
+        <xs:attribute name="topicPosttag" type="xs:string" use="optional" />
+        <xs:attribute name="queuePosttag" type="xs:string" use="optional" />
     </xs:complexType>
 
     <xs:complexType name="TManager">
