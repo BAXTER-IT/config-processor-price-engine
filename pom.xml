@@ -11,7 +11,7 @@
 
     <groupId>com.baxter.config.processor.pe</groupId>
     <artifactId>baxter-config-processor-price-engine</artifactId>
-    <version>1.18-SNAPSHOT</version>
+    <version>1.18</version>
 
     <name>Configuration Processor for Price Engine</name>
     <description>Configuration processor to be used with Baxter Configuration Server.</description>
