@@ -80,8 +80,12 @@
 
     <xs:complexType name="TSSL">
         <xs:attribute name="id" type="xs:NCName" use="optional" />
-        <xs:attribute name="store" type="xs:anyURI" use="optional" />
-        <xs:attribute name="storePassword" type="xs:string" use="optional" />
+        <xs:attribute name="keyStore" type="xs:anyURI" use="optional" />
+		<xs:attribute name="keyStoreType" type="xs:anyURI" use="optional" />
+        <xs:attribute name="keyStorePassword" type="xs:string" use="optional" />
+		<xs:attribute name="trustStore" type="xs:anyURI" use="optional" />
+		<xs:attribute name="trustStoreType" type="xs:anyURI" use="optional" />
+        <xs:attribute name="trustStorePassword" type="xs:string" use="optional" />
         <xs:attribute name="anonCipher" type="xs:string" use="optional" />
     </xs:complexType>
 

@@ -25,15 +25,41 @@
             <xsl:attribute name="key">
                 <xsl:value-of select="@id" />
             </xsl:attribute>
-            <entry key="TrustStore">
-                <xsl:value-of select="@store" />
-            </entry>
-            <entry key="KeyStorePassword">
-                <xsl:value-of select="@storePassword" />
-            </entry>
-            <entry key="AnonCipher">
-                <xsl:value-of select="@anonCipher" />
-            </entry>
+			<xsl:if test="@keyStore">
+				<entry key="KeyStore">
+					<xsl:value-of select="@keyStore" />
+				</entry>
+			</xsl:if>
+			<xsl:if test="@keyStoreType">
+				<entry key="KeyStoreType">
+					<xsl:value-of select="@keyStoreType" />
+				</entry>
+			</xsl:if>
+			<xsl:if test="@keyStorePassword">
+				<entry key="KeyStorePassword">
+					<xsl:value-of select="@keyStorePassword" />
+				</entry>
+			</xsl:if>
+			<xsl:if test="@trustStore">
+				<entry key="TrustStore">
+					<xsl:value-of select="@trustStore" />
+				</entry>
+			</xsl:if>
+			<xsl:if test="@trustStoreType">
+				<entry key="TrustStoreType">
+					<xsl:value-of select="@trustStoreType" />
+				</entry>
+			</xsl:if>
+			<xsl:if test="@trustStorePassword">
+				<entry key="TrustStorePassword">
+					<xsl:value-of select="@trustStorePassword" />
+				</entry>
+			</xsl:if>
+			<xsl:if test="@anonCipher">
+				<entry key="AnonCipher">
+					<xsl:value-of select="@anonCipher" />
+				</entry>
+			</xsl:if>
         </group>
     </xsl:template>
 
