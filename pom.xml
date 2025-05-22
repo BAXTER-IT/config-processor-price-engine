@@ -45,24 +45,24 @@
     <profiles>
 	    
 	 <profile>
-			<id>Distribution-Artifactory</id>
+			<id>Distribution-Nexus</id>
 			<distributionManagement>
 				<repository>
-					<id>artifactory-release-repository</id>
-					<name>Artifactory Release Repository</name>
-					<url>http://baxter.artifactoryonline.com/baxter/baxter-releases</url>
+					<id>nexus-stable-repository</id>
+					<name>Nexus Release Repository</name>
+					<url>http://nexus.baxter.lan/repository/baxter-releases/</url>
 				</repository>
 				<snapshotRepository>
-					<id>artifactory-snapshot-repository</id>
-					<name>Artifactory Snapshot Repository</name>
-					<url>http://baxter.artifactoryonline.com/baxter/baxter-snapshots</url>
+					<id>nexus-snapshot-repository</id>
+					<name>Nexus Snapshot Repository</name>
+					<url>http://nexus.baxter.lan/repository/baxter-snapshots/</url>
 				</snapshotRepository>
 				<site>
-					<id>artifactory-sites-repository</id>
-					<url>dav:http://baxter.artifactoryonline.com/baxter/sites/parent/</url>
+					<id>nexus-sites-repository</id>
+					<url>dav:http://nexus.baxter.lan/repository/baxter/sites/parent/</url>
 				</site>
 			</distributionManagement>
-		</profile>   
+		</profile>
         <profile>
             <id>Distribution-CloudBees</id>
             <distributionManagement>
