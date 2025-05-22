@@ -43,6 +43,7 @@
 			<c:component id="price-engine-trackwheel" name="TrackWheel" />
 		</j:clients>
 		<j:servers>
+			<c:component id="price-engine-admintool-servlet" name="Admintool Servlet" />
 			<c:component id="price-engine-authserver" name="Authentication Server" />
 			<c:component id="price-engine-blotterserver" name="Blotter Server" />
 			<c:component id="price-engine-broadcast" name="Broadcast" />
@@ -72,6 +73,7 @@
 			<c:component id="price-engine-liquidity-provider-GenericFIX"
 				name="Liquidity Provider Generic" />
 			<c:component id="price-engine-liquidity-provider-IBAN" name="Liquidity Provider IBAN" />
+			<c:component id="price-engine-liquidity-provider-Integral" name="Liquidity Provider Integral" />
 			<c:component id="price-engine-liquidity-provider-MorganStanley"
 				name="Liquidity Provider Morgan" />
 			<c:component id="price-engine-liquidity-provider-NTPro"
@@ -81,6 +83,7 @@
 				name="Liquidity Provider Sucden" />
 
 			<c:component id="price-engine-posmanserver" name="Position Manager" />
+			<c:component id="price-engine-reconciliation" name="Reconciliation Server" />
 			<c:component id="rate-engine" name="Rate Engine" />
 			<c:component id="price-engine-restfulservice" name="Restful Service" />
 			<c:component id="reuters-rfa-fwd" name="Reuters RFA FWD" />
@@ -90,21 +93,22 @@
 			<c:component id="price-engine-twserver" name="TrackWheel Server" />
 			<c:component id="price-engine-validator" name="Validator" />
 			<c:component id="price-engine-vdtws" name="Validator with TrackWheel Server" />
-
-
-
 		</j:servers>
 		<j:tools>
 			<c:component id="price-engine-argon-updater" name="Argon Updater" />
+			<c:component id="price-engine-db-updater" name="DB Updater" />
 			<c:component id="price-engine-tenor-group-configurator"
 				name="Tenor Group Configurator" />
+			<c:component id="price-engine-user-class-region-updater" name="User Class Region Updater" />
 		</j:tools>
 		<j:testerTools>
 			<c:component id="credit-check" name="Credit Check" />
 			<c:component id="demo-vendor" name="Demo Vendor" />
 			<c:component id="di-upstream" name="DI Upstream Tester" />
+			<c:component id="external-account-number-provider-system" name="External Account Number Provider Tool" />
 			<c:component id="external-permission-system" name="External Permission System" />
 			<c:component id="handoff-tester" name="Handoff Tester" />
+			<c:component id="kondor-stp-simulator" name="Kondor Simulator" />
 			<c:component id="price-engine-aat" name="Price Engine AAT" />
 			<c:component id="trading-tool" name="Trading Tool" />
 		</j:testerTools>
